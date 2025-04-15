@@ -35,14 +35,16 @@
                   I did my MSc. in Data Science from <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> and my BSc. in Statistics from <a href="https://www.sxccal.edu/">St. Xavier's College (Autonomous), Kolkata</a> (under University of Calcutta).
                 </p>
                 <p style="text-align:center">
-                  <a href="#" id="email-link">
-                    <i class="fas fa-envelope" style="margin-right: 5px;"></i>Email
-                  </a>
+                  <span id="email-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <a href="javascript:void(0);" id="show-email" style="text-decoration: none;">Email</a>
+                  </span>
+                  &nbsp;
                 
-                  <!-- Initially showing obfuscated email -->
+                  <!-- Initially showing obfuscated email
                   <span class="scrambled-email" id="email-display"></span>
                   <button id="reveal-email" style="cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px; display: none;">Reveal Email</button>
-                  &nbsp;
+                  &nbsp; -->
                   <!-- <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp; -->
                   <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
                   <!-- <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp; -->
@@ -52,7 +54,7 @@
                 </p>
            
 
-                <script>
+                <!-- <script>
                   // New real email
                   const realEmail = "surtantheta@gmail.com";
                 
@@ -93,7 +95,31 @@
                     this.disabled = true;
                     this.style.backgroundColor = "#ccc"; // Change button color when disabled
                   });
-                </script>
+                </script> -->
+                <!-- Hidden Email Section -->
+              <div id="email-content" style="text-align:center; margin-top:10px; display:none;">
+                <span id="scrambled-email">su•••@g•••.com</span>
+                <button id="reveal-email" style="margin-left: 10px; cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                  Reveal Email
+                </button>
+              </div>
+
+              <script>
+                const scrambled = "c3VydGFudGhldGFAZ21haWwuY29t"; // base64 of surtantheta@gmail.com
+                const emailReal = atob(scrambled);
+
+                document.getElementById("show-email").addEventListener("click", function() {
+                  document.getElementById("email-content").style.display = "block";
+                  document.getElementById("show-email").style.pointerEvents = "none";
+                  document.getElementById("show-email").style.color = "#888";
+                });
+
+                document.getElementById("reveal-email").addEventListener("click", function () {
+                  document.getElementById("scrambled-email").innerHTML = `<a href="mailto:${emailReal}">${emailReal}</a>`;
+                  this.disabled = true;
+                  this.style.backgroundColor = "#ccc";
+                });
+              </script>
               </td>
               <td style="padding:2.5%;width:40%;max-width:40%">
               <a href="images/TanujSur.jpeg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 60%;" alt="profile photo" src="images/TanujSur.jpeg" class="hoverZoomLink"></a>
