@@ -34,13 +34,18 @@
                   I did my MSc. in Data Science from <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> and my BSc. in Statistics from <a href="https://www.sxccal.edu/">St. Xavier's College (Autonomous), Kolkata</a> (under University of Calcutta).
                 </p>
                 <p style="text-align:center">
-                  <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp;
-                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
-                  <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp;
-                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en">Scholar</a> &nbsp;/&nbsp;
-                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
-                  <a href="https://github.com/surtantheta/">Github</a>
+                  <span class="scrambled-email" data-email="dGFudWpAY21pLmFjLmlu">
+                    <i class="fas fa-envelope icon"></i>Email
+                  </span> &nbsp;/&nbsp;
+                  <a href="data/TanujSur-bio.txt"><i class="fas fa-user icon"></i>Bio</a> &nbsp;/&nbsp;
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en">
+                    <i class="fas fa-graduation-cap icon"></i>Scholar
+                  </a> &nbsp;/&nbsp;
+                  <a href="https://github.com/surtantheta/">
+                    <i class="fab fa-github icon"></i>Github
+                  </a>
                 </p>
+                
               </td>
               <td style="padding:2.5%;width:40%;max-width:40%">
               <a href="images/TanujSur.jpeg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 60%;" alt="profile photo" src="images/TanujSur.jpeg" class="hoverZoomLink"></a>
@@ -52,39 +57,56 @@
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>News Widget</title>
-              <style>
-                  body {
-                      font-family: Arial, sans-serif;
-                      margin: 20px;
-                  }
-                  .news-widget {
-                      border: 2px solid #f3f3f3;
-                      border-radius: 10px;
-                      padding: 15px;
-                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                      display: flex;
-                      align-items: center;
-                      background-color: #f9f9f9;
-                  }
-                  .news-icon {
-                      font-size: 24px;
-                      margin-right: 10px;
-                      color: #ff6347; /* Party symbol color */
-                  }
-                  .news-content {
-                      flex: 1;
-                  }
-                  .news-title {
-                      font-size: 18px;
-                      font-weight: bold;
-                      margin: 0 0 5px;
-                  }
-                  .news-description {
-                      font-size: 14px;
-                      margin: 0;
-                  }
-              </style>
-          </head>
+              <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    /* News widget styles */
+    .news-widget {
+      border: 2px solid #f3f3f3;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      background-color: #f9f9f9;
+    }
+    .news-icon {
+      font-size: 24px;
+      margin-right: 10px;
+      color: #ff6347;
+    }
+    .news-content {
+      flex: 1;
+    }
+    .news-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+    .news-description {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Icon and link enhancements */
+    .icon {
+      margin-right: 5px;
+    }
+    .scrambled-email {
+      cursor: pointer;
+      color: #0077cc;
+      text-decoration: underline;
+    }
+  </style>
+
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+</head>
           <body>
 
               <div class="news-widget">
@@ -450,6 +472,13 @@
   </tr>
 </table> 
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
+<script>
+  document.querySelector('.scrambled-email').addEventListener('click', function () {
+    const scrambled = this.getAttribute('data-email');
+    const decoded = atob(scrambled);
+    this.innerHTML = `<i class="fas fa-envelope icon"></i><a href="mailto:${decoded}">${decoded}</a>`;
+  });
+</script>
 </body>
 <!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsurtantheta.github.io&count_bg=%2323B538&title_bg=%231E1D1D&icon=phabricator.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/></a> -->
 </html>
