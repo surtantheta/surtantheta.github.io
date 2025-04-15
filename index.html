@@ -34,27 +34,55 @@
                   I did my MSc. in Data Science from <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> and my BSc. in Statistics from <a href="https://www.sxccal.edu/">St. Xavier's College (Autonomous), Kolkata</a> (under University of Calcutta).
                 </p>
                 <p style="text-align:center">
-                  <span class="scrambled-email" id="email-display">tanuj@junt.ac.in</span> <!-- Scrambled email shown initially -->
+                  <span class="scrambled-email" id="email-display">surantheta@xxx.xxx</span>
                   <button id="reveal-email" style="cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px;">Reveal Email</button>
                   &nbsp;/&nbsp;
                   <!-- <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp; -->
                   <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
                   <!-- <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp; -->
-                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en">Scholar</a> &nbsp;/&nbsp;
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i></i>Scholar</a> &nbsp;/&nbsp;
                   <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
-                  <a href="https://github.com/surtantheta/">Github</a>
+                  <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
                 </p>
+                <!-- Add Font Awesome CDN in <head> if not already included -->
+                <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
                 <script>
-                  // Scrambled email and the real email
-                  const scrambledEmail = "dGFudWpAY21pLmFjLmlu"; // base64 encoded email tanuj@cmi.ac.in
-                  const realEmail = atob(scrambledEmail);
+                  // New real email
+                  const realEmail = "surtantheta@gmail.com";
                 
+                  // Obfuscate both parts (before and after @)
+                  function generateObfuscatedEmail() {
+                    const emailParts = realEmail.split('@');
+                    const localPart = emailParts[0];
+                    const domainPart = emailParts[1];
+                
+                    // Randomize both parts
+                    const randomLocal = generateRandomString(localPart.length);
+                    const randomDomain = generateRandomString(domainPart.length);
+                
+                    return `${randomLocal}@${randomDomain}`;
+                  }
+                
+                  // Generate random string of the same length as input string
+                  function generateRandomString(length) {
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                      result += characters.charAt(Math.floor(Math.random() * characters.length));
+                    }
+                    return result;
+                  }
+                
+                  // Set initial obfuscated email display
+                  document.getElementById('email-display').innerText = generateObfuscatedEmail();
+                
+                  // Reveal the real email when button is clicked
                   document.getElementById("reveal-email").addEventListener("click", function() {
-                    // Replace scrambled email with the real one
                     document.getElementById("email-display").innerHTML = `<a href="mailto:${realEmail}">${realEmail}</a>`;
                     // Disable the button after revealing
                     this.disabled = true;
-                    this.style.backgroundColor = "#ccc"; // Optional: change button color when disabled
+                    this.style.backgroundColor = "#ccc"; // Change button color when disabled
                   });
                 </script>
 
