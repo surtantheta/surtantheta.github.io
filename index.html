@@ -438,6 +438,40 @@
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
+          <div class="two" id='cat3d_image'><a href="images/egohuman3r.mp4"><video  width=100% height=100% muted autoplay loop>
+          <source src="images/cat3d1.mp4" type="video/mp4" width="100%" height="100%"></a>
+          Click the video to expand.
+          </video></div>
+          <img src='images/cat3d1.png' width="160">
+        </div>
+        <script type="text/javascript">
+          function cat3d_start() {
+            document.getElementById('cat3d_image').style.opacity = "1";
+          }
+
+          function cat3d_stop() {
+            document.getElementById('cat3d_image').style.opacity = "0";
+          }
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+      <a href="https://mobility.iiit.ac.in/drivesim/index.html">
+			<span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction
+</span>
+        </a>
+        <br>
+				<strong>Tanuj Sur</strong>,
+        <a href="https://sites.google.com/site/shankarsetty/home?authuser=0">Dr. Shankar Gangisetty</a>,
+        <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
+        <p></p>
+        <p>
+         We curate a dataset comprising of egocentric driver attention maps in simulated evironments built upon <a href="https://carla.org/">CARLA</a> and <a href="https://www.unrealengine.com/en-US">Unreal Engine</a>. We use <a href="https://www.projectaria.com/">Meta's Eye Tracking ARIA glasses</a> for registering user gaze.
+        </p>
+      </td>
+    </tr>
+    <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
           <div class="two" id='cat3d_image'><a href="images/cat3d1.mp4"><video  width=100% height=100% muted autoplay loop>
           <source src="images/cat3d1.mp4" type="video/mp4" width="100%" height="100%"></a>
           Click the video to expand.
