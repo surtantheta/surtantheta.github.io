@@ -1,0 +1,592 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Tanuj Sur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <meta name="author" content="Tanuj Sur">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr style="padding:0px">
+              <td style="padding:2.5%;width:63%;vertical-align:middle">
+                <p class="name" style="text-align: center;">
+                  Tanuj Sur
+                </p>
+                <p>I'm a PhD student at the <strong>School of Computing, National University of Singapore</strong> advised by Professor <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>. Previously, I was a Senior Data Scientist at <a href="https://in.micron.com/">Micron Technology</a> for 3 years where I worked on cutting edge AI solutions in the semiconductor industry.
+                </p>
+                <p>I have had the opportunity to work under the mentorship of <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a> at the <em>Indian Institute of Technology Bombay</em>, focusing on 3D Vision and Lifelong Learning. My experience also includes working with <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a> at the <em>International Institute of Information Technology-Hyderabad</em>, where I contributed to research in Egocentric Vision. Additionally, I served as a research assistant at the <em>Indian Institute of Technology Delhi</em>, collaborating with <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a> on projects related to Data-Efficient Learning and Biomedical Vision challenges.</p>
+                <!-- <p>
+                  I have been fortunate to work under the guidance of <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
+                  <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a> at the <a href="https://www.minds.iitb.ac.in/">Indian Institute of Technology Bombay</a> in the field of <strong>3D Vision</strong> and <strong>Lifelong learning</strong>. I also had the privilege of working under <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a> at the <a href="https://www.iiit.ac.in/">International Institute of Information Technology-Hyderabad</a> on <strong>Egocentric Vision</strong>. Additionally, I have served as a research assistant at the <a href="https://ee.iitd.ac.in/">Indian Institute of Technology Delhi</a> under the supervision of <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a> working on <strong>Data-efficient learning</strong> and <strong>Biomedical Vision</strong> problems.
+
+                </p> -->
+                <p>
+                  I earned my MSc. in Data Science from <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> and my BSc. in Statistics from <a href="https://www.sxccal.edu/">St. Xavier's College (Autonomous), Kolkata</a> (under the University of Calcutta).
+                </p>
+                <p style="text-align:center">
+                  <span id="email-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <a href="javascript:void(0);" id="show-email" style="text-decoration: none;">Email</a>
+                  </span>
+                  &nbsp;
+                
+                  <!-- Initially showing obfuscated email
+                  <span class="scrambled-email" id="email-display"></span>
+                  <button id="reveal-email" style="cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px; display: none;">Reveal Email</button>
+                  &nbsp; -->
+                  <!-- <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp; -->
+                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
+                  <!-- <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp; -->
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i></i>Scholar</a> &nbsp;
+                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
+                  <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
+                </p>
+           
+
+                <!-- <script>
+                  // New real email
+                  const realEmail = "surtantheta@gmail.com";
+                
+                  // Function to generate the initial scrambled email
+                  function generateObfuscatedEmail() {
+                    const emailParts = realEmail.split('@');
+                    const localPart = emailParts[0];
+                    const domainPart = emailParts[1];
+                
+                    // Randomize both parts
+                    const randomLocal = generateRandomString(localPart.length);
+                    const randomDomain = generateRandomString(domainPart.length);
+                
+                    return `${randomLocal}@${randomDomain}`;
+                  }
+                
+                  // Generate random string of the same length as input string
+                  function generateRandomString(length) {
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                      result += characters.charAt(Math.floor(Math.random() * characters.length));
+                    }
+                    return result;
+                  }
+                
+                  // Set initial scrambled email and show the "Reveal Email" button
+                  document.getElementById('email-link').addEventListener('click', function() {
+                    const scrambledEmail = generateObfuscatedEmail();
+                    document.getElementById('email-display').innerText = scrambledEmail;
+                    document.getElementById('reveal-email').style.display = 'inline-block'; // Show the reveal button
+                  });
+                
+                  // Reveal the real email when button is clicked
+                  document.getElementById("reveal-email").addEventListener("click", function() {
+                    document.getElementById("email-display").innerHTML = `<a href="mailto:${realEmail}">${realEmail}</a>`;
+                    // Disable the button after revealing
+                    this.disabled = true;
+                    this.style.backgroundColor = "#ccc"; // Change button color when disabled
+                  });
+                </script> -->
+                <!-- Hidden Email Section -->
+              <div id="email-content" style="text-align:center; margin-top:10px; display:none;">
+                <span id="scrambled-email">su•••@g•••.com</span>
+                <button id="reveal-email" style="margin-left: 10px; cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                  Reveal Email
+                </button>
+              </div>
+
+              <script>
+                const scrambled = "c3VydGFudGhldGFAZ21haWwuY29t"; // base64 of surtantheta@gmail.com
+                const emailReal = atob(scrambled);
+
+                document.getElementById("show-email").addEventListener("click", function() {
+                  document.getElementById("email-content").style.display = "block";
+                  document.getElementById("show-email").style.pointerEvents = "none";
+                  document.getElementById("show-email").style.color = "#888";
+                });
+
+                document.getElementById("reveal-email").addEventListener("click", function () {
+                  document.getElementById("scrambled-email").innerHTML = `<a href="mailto:${emailReal}">${emailReal}</a>`;
+                  this.disabled = true;
+                  this.style.backgroundColor = "#ccc";
+                });
+              </script>
+              </td>
+              <td style="padding:2.5%;width:40%;max-width:40%">
+                <a href="images/IMG_4187.jpg">
+                  <img 
+                    style="width:100%;max-width:100%;object-fit:cover;border-radius:10px;" 
+                    alt="profile photo" 
+                    src="images/IMG_4187.jpg" 
+                    class="hoverZoomLink">
+                </a>
+              </td>
+
+            </tr>
+          </tbody></table>
+          <!DOCTYPE html>
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>News Widget</title>
+              <style>
+                  body {
+                      font-family: Arial, sans-serif;
+                      margin: 20px;
+                  }
+                  .news-widget {
+                      border: 2px solid #f3f3f3;
+                      border-radius: 10px;
+                      padding: 15px;
+                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                      display: flex;
+                      align-items: center;
+                      background-color: #f9f9f9;
+                  }
+                  .news-icon {
+                      font-size: 24px;
+                      margin-right: 10px;
+                      color: #ff6347; /* Party symbol color */
+                  }
+                  .news-content {
+                      flex: 1;
+                  }
+                  .news-title {
+                      font-size: 18px;
+                      font-weight: bold;
+                      margin: 0 0 5px;
+                  }
+                  .news-description {
+                      font-size: 14px;
+                      margin: 0;
+                  }
+              </style>
+          </head>
+          <body>
+
+              <div class="news-widget">
+                  <!-- <div class="news-icon">🎉</div> Party symbol icon -->
+                  <div class="news-content">
+                      <p class="news-title">Recent News 🎉</p>
+                      <p class="news-description"><strong>Aug' 25</strong>: I have joined the <strong>School of Computing, National University of Singapore</strong> as a PhD student in Fall 2025.</p>
+                      <p class="news-description"><strong>Feb' 25</strong>: Our paper titled <strong>Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation</strong> is accepted at CVPR 2025. Preprint will be available soon !</p>
+                  </div>
+              </div>
+
+          </body>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>Research</h2>
+                <p>
+                  I'm interested in Computer Vision problems related to <strong>3D scene reconstruction</strong>, <strong>human mesh recovery</strong> and <strong>scene understanding</strong>. My research till now has been primarily in meta learning, incremental learning and data efficient learning. You can find my research works below.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+    <tr onmouseout="wacv_stop()" onmouseover="wacv_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='wacv_image'>
+					  <img src='images/wacv_after.jpg' width=100%>
+					</div>
+          <img src='images/wacv_before.gif' width=100%>
+        </div>
+        <script type="text/javascript">
+          function wacv_start() {
+            document.getElementById('wacv_image').style.opacity = "1";
+          }
+
+          function wacv_stop() {
+            document.getElementById('wacv_image').style.opacity = "0";
+          }
+          wacv_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <!-- <a href="https://ever.github.io/"> -->
+			<span class="papertitle">	
+        Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation
+</span>
+        </a>
+        <br>
+				<u>Tanuj Sur</u>,
+        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
+        <a href="https://openreview.net/profile?id=~Kaizer_Rahaman1">Kaizer Rahman</a>,
+        <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a>,
+        <a href="https://m-haris-khan.com/">Dr. Muhammad Haris Khan</a>,
+        <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>
+				<br>
+        <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 2025
+        <br>
+
+        <!-- <br> -->
+        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
+        <!-- / -->
+        <!-- <a href="https://arxiv.org/abs/2410.01804">arXiv</a> -->
+        <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Sur_Hyperbolic_Uncertainty-Aware_Few-Shot_Incremental_Point_Cloud_Segmentation_CVPR_2025_paper.pdf">Paper link</a>
+        <p></p>
+        <p>
+          3D point cloud segmentation faces challenges in incremental settings, especially with limited supervision and unseen classes. While Few-Shot Learning (FSL) and Class-Incremental Learning (CIL) have been studied separately, their combination (FSCIL) is underexplored in 3D segmentation.
+          To tackle this, we propose Hyperbolic Ideal Prototytpe Optimization (HIPO) framework which leverages hyperbolic Poincaré Ball classifier space and CLIP-informed Ideal Prototypes in the Poincaré sphere to capture data hierarchy, enforce prototype orthogonality, and maintain wide representational margins.
+          HIPO mitigates forgetting, enables smooth class integration, and achieves state-of-the-art results on S3DIS, ScanNetv2, and cross-dataset benchmarks for FSCIL.          
+        </p>
+      </td>
+    </tr>
+
+    <tr onmouseout="icassp_stop()" onmouseover="icassp_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='icassp_image'>
+            <img src='images/icassp_after.jpg' width=115%>
+          </div>
+          <img src='images/icassp_before.gif' width=100%>
+        </div>
+        <script type="text/javascript">
+          function icassp_start() {
+            document.getElementById('icassp_image').style.opacity = "1";
+          }
+
+          function icassp_stop() {
+            document.getElementById('icassp_image').style.opacity = "0";
+          }
+          icassp_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <!-- <a href="https://ever.github.io/"> -->
+      <span class="papertitle">UIDAPLE: Unsupervised Incremental Domain
+        Adaptation through Adaptive Prompt Learning
+    </span>
+        </a>
+        <br>
+        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
+        <u>Tanuj Sur</u>,
+        <a href="https://www.linkedin.com/in/saurish-seksaria-342191229/?trk=people_directory&originalSubdomain=in">Saurish Seksaria</a>,
+        <a href="https://www.cvai.cs.uni-frankfurt.de/team.html">Prof. Dr. Gemma Roig</a>,
+        <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a>,
+        <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>
+        <br>
+        <em>International Conference on Acoustics, Speech, and Signal Processing</em>, 2025
+        <br>
+        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
+        <!-- / -->
+        <!-- <a href="https://arxiv.org/abs/2410.01804">arXiv</a> -->
+        <a href="https://ieeexplore.ieee.org/abstract/document/10890768">Paper link</a>
+        <p></p>
+        <p>
+          Continual learning in deep neural networks faces challenges like catastrophic forgetting and issues with shifting data distributions. 
+          This paper addresses these challenges within the Unsupervised Incremental Domain Adaptation (UIDA) framework, where the initial source domain is labeled while subsequent domains are not. 
+          Existing methods often lack cross-domain generalization and adaptation. 
+          We propose UIDAPLE, a new approach that uses a unified prompt across all domains, leveraging the CLIP foundation model to eliminate the need for separate domain treatments.
+        </p>
+      </td>
+    </tr>
+    
+    <tr onmouseout="tmi_stop()" onmouseover="tmi_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='tmi_image'>
+            <img src='images/tmi_after.png' width=115%>
+          </div>
+          <img src='images/tmi_after.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function tmi_start() {
+            document.getElementById('tmi_image').style.opacity = "1";
+          }
+
+          function tmi_stop() {
+            document.getElementById('tmi_image').style.opacity = "0";
+          }
+          tmi_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <!-- <a href="https://ever.github.io/"> -->
+      <span class="papertitle">Robust Prototypical Few‑Shot Organ Segmentation with Regularized Neural‑ODEs
+    </span>
+        </a>
+        <br>
+        <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
+        <a href="https://mustafa1728.github.io/">Mustafa Chasmai*</a>,
+        <u>Tanuj Sur</u>,
+        <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a>
+        <br>
+        <em>IEEE Transactions on Medical Imaging</em>, 2023 (Impact Factor: <strong>10.6</strong>)
+        <br>
+        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
+        <a href="https://arxiv.org/abs/2208.12428">Paper link</a> | <a href="https://github.com/surtantheta/R-PNODE">Code</a>
+        <p></p>
+        <p>
+          The text discusses advancements in deep learning for image semantic segmentation but highlights the challenge of requiring large annotated datasets. It notes a shift towards Few-Shot Learning (FSL), particularly in medical domains where pixel-level annotations are costly. 
+          The proposed solution is Regularized Prototypical Neural Ordinary Differential Equation (R-PNODE), which utilizes Neural-ODEs alongside cluster and consistency losses to improve Few-Shot Segmentation (FSS) of organs.
+        </p>
+      </td>
+    </tr>
+
+    <tr onmouseout="miccai_stop()" onmouseover="miccai_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='miccai_image'>
+            <img src='images/miccai_after.jpg' width=115%>
+          </div>
+          <img src='images/miccai_after.jpg' width=100%>
+        </div>
+        <script type="text/javascript">
+          function miccai_start() {
+            document.getElementById('miccai_image').style.opacity = "1";
+          }
+
+          function miccai_stop() {
+            document.getElementById('miccai_image').style.opacity = "0";
+          }
+          miccai_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <!-- <a href="https://ever.github.io/"> -->
+      <span class="papertitle">Adversarially Robust Prototypical Few‑shot Segmentation with Neural‑ODEs
+    </span>
+        </a>
+        <br>
+        <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
+        <a href="https://scholar.google.com/citations?hl=en&user=6Rt6nv4AAAAJ&view_op=list_works&sortby=pubdate">Aleti Vardhan*</a>,
+        <a href="https://mustafa1728.github.io/">Mustafa Chasmai</a>,
+        <u>Tanuj Sur</u>,
+        <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a>
+        <br>
+        <em>International Conference on Medical Image Computing and Computer Assisted Intervention</em>, 2022
+        <br>
+        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-16452-1_8">Paper link</a> | <a href="https://github.com/surtantheta/PNODE-FSS">Code</a>
+        <p></p>
+        <p>
+          Few-shot Learning (FSL) methods are increasingly used in data-scarce environments, particularly in the medical field where obtaining annotations is costly. 
+          However, Deep Neural Networks, especially in FSL, are vulnerable to adversarial attacks, which can critically affect clinical decisions. 
+          This paper presents a framework aimed at enhancing the adversarial robustness of few-shot segmentation models in the medical domain.
+        </p>
+      </td>
+    </tr>
+    <tr onmouseout="cods_stop()" onmouseover="cods_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='cods_image'>
+            <img src='images/cods_after.jpg' width=100%>
+          </div>
+          <img src='images/cods_after.jpg' width=100%>
+        </div>
+        <script type="text/javascript">
+          function cods_start() {
+            document.getElementById('cods_image').style.opacity = "1";
+          }
+
+          function cods_stop() {
+            document.getElementById('cods_image').style.opacity = "0";
+          }
+          cods_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <!-- <a href="https://ever.github.io/"> -->
+      <span class="papertitle">Mathematical Expressions in Software Engineering Artifacts
+    </span>
+        </a>
+        <br>
+        <u>Tanuj Sur</u>,
+        <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao
+        </a>
+        <br>
+        <em>CODS-COMAD: International Conference on Data Science and Management of Data</em>, 2023
+        <br>
+        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
+        <a href="https://dl.acm.org/doi/10.1145/3570991.3571033">Paper link</a>
+        <p></p>
+        <p>
+          Mathematical expressions are essential not only for numerical calculations but also for enhancing clarity in discussions and documentation. 
+          They are present in various software engineering artifacts like source code, documentation, and bug reports. 
+          Research shows that these expressions impact the accuracy of commit message generation tools. 
+          To support future research, a dataset of 
+          bug reports with annotated mathematical expressions has been created and shared, along with a tool called MEDSEA to identify these expressions.
+        </p>
+      </td>
+    </tr>
+
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+      <tr>
+        <td>
+          <h2>Projects</h2>
+          <p>
+            I have highlighted some of the projects that I have been a part of. 
+          </p>
+        </td>
+      </tr>
+    </tbody></table>
+    <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
+    <tr onmouseout="tram_stop()" onmouseover="tram_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='tram'><a href="images/egohuman3r.mp4"><video  width=100% height=100% muted autoplay loop>
+          <source src="images/egohuman3r.mp4" type="video/mp4" width="110%" height="100%"></a>
+          Click the video to expand.
+          </video></div>
+          <img src='images/tram1_before.png' width="160">
+        </div>
+        <script type="text/javascript">
+          function tram_start() {
+            document.getElementById('tram').style.opacity = "1";
+          }
+
+          function tram_stop() {
+            document.getElementById('tram').style.opacity = "0";
+          }
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+			<span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction
+</span>
+        </a>
+        <br>
+        <p>
+         We are the first to jointly reconstruct first-person, third-Person Human Mesh Reconstruction along with scene point cloud for Aria Digital Twin Dataset. We leverage <a href="https://egoallo.github.io/">EgoAllo</a> and <a href="https://fanegg.github.io/Human3R/">Human3R</a> to accomplish both scene and human mesh reconstruction.
+        <br>
+         <a href="https://github.com/surtantheta/EgoHuman3R">Code</a>
+        <p></p>
+      </td>
+    </tr>
+    <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='cat3d_image'><a href="images/cat3d1.mp4"><video  width=100% height=100% muted autoplay loop>
+          <source src="images/cat3d1.mp4" type="video/mp4" width="100%" height="100%"></a>
+          Click the video to expand.
+          </video></div>
+          <img src='images/cat3d1.png' width="160">
+        </div>
+        <script type="text/javascript">
+          function cat3d_start() {
+            document.getElementById('cat3d_image').style.opacity = "1";
+          }
+
+          function cat3d_stop() {
+            document.getElementById('cat3d_image').style.opacity = "0";
+          }
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+      <a href="https://mobility.iiit.ac.in/drivesim/index.html">
+			<span class="papertitle">Egocentric Driver Attention
+</span>
+        </a>
+        <br>
+				<strong>Tanuj Sur</strong>,
+        <a href="https://sites.google.com/site/shankarsetty/home?authuser=0">Dr. Shankar Gangisetty</a>,
+        <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
+        <p></p>
+        <p>
+         We curate a dataset comprising of egocentric driver attention maps in simulated evironments built upon <a href="https://carla.org/">CARLA</a> and <a href="https://www.unrealengine.com/en-US">Unreal Engine</a>. We use <a href="https://www.projectaria.com/">Meta's Eye Tracking ARIA glasses</a> for registering user gaze.
+        </p>
+      </td>
+    </tr>
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+      <tr>
+        <td>
+          <h2>Research Internships</h2>
+        </td>
+      </tr>
+    </tbody></table>
+    <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
+      
+      <tr>
+        <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iiit-logo2.jpg"></td>
+        <td width="75%" valign="center">
+          <a href="https://mobility.iiit.ac.in/drivesim/index.html">Centre for Visual Information Technology (CVIT)</a>,
+             International Institute of Information Technology - Hyderabad under <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iitb-logo1_new.png"></td>
+        <td width="75%" valign="center">
+          <a href="https://www.minds.iitb.ac.in/">Center of Machine Intelligence & Data Science (CMInDS)</a>, Indian Institute of Technology Bombay under <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
+          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.   
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/tcs-logo1.jpg"></td>
+        <td width="75%" valign="center">
+          <a href="https://www.tcs.com/what-we-do/research">TCS Research and Innovation Labs</a>
+        </td>
+      </tr>
+    
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+      <tr>
+        <td>
+          <h2>Services</h2>
+        </td>
+      </tr>
+    </tbody></table>
+    <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img
+            src="images/nus_logo.png"
+            alt="NUS logo"
+            style="width:120px;height:auto;max-width:100%;display:block;"
+          >
+        </td>
+        <td width="30%" valign="center">
+          1. Teaching Assistant for CS4243 Computer Vision and Pattern Recognition under Prof.
+          <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>.
+          <br><br>
+          2. Teaching Assistant for CS5224 Cloud Computing under Prof.
+          <a href="https://www.comp.nus.edu.sg/~axgopala/">Anandha Gopalan</a>.
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:20px;width:10%;vertical-align:middle"><img src="images/cvf_new.jpg"></td>
+        <td width="75%" valign="center">
+          Emergency Reviewer, <a href="https://wacv2025.thecvf.com/">WACV 2025</a>.
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <img src="images/cmi-logo1_new.png" alt="cs188">
+        </td>
+        <td width="75%" valign="center">
+          1. <a href="https://lightning-postage-c9f.notion.site/Elevating-Student-Internship-Experiences-Alumni-Mentored-Internship-at-CMI-ad8e99c56f044db9b5445602f3ead74f">Industry Project instructor</a> on "Web User Interface (UI) detection from website images".
+          <br>
+          <br>
+          2. Teaching Assistant for Data Mining & Machine Learning under Prof. <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>. 
+        </td>
+      </tr>
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr>
+          <td style="padding:0px">
+            <br>
+            <!-- <p style="text-align:right;font-size:small;">
+              The code for this website is adopted from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron's website</a>.
+            </p> -->
+          </td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+</table> 
+<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
+</body>
+<!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsurtantheta.github.io&count_bg=%2323B538&title_bg=%231E1D1D&icon=phabricator.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/></a> -->
+</html>
