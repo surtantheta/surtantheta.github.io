@@ -11,36 +11,38 @@
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-    <!-- ===================== Added: Profile 3D (cascade replace) + “Research” badge + Fullscreen modal ===================== -->
+    <!-- =================== Added: Profile hover + click-to-fullscreen 3D =================== -->
     <style>
-      /* --- Cascading replace effect: image fades/slides out, video fades/slides in --- */
+      /* ---------- Profile: cascading replace effect (image -> video) ---------- */
       #profile3d_container { cursor: pointer; }
+
       #profile3d_container .profile3d_media {
         position: relative;
         width: 100%;
         border-radius: 10px;
         overflow: hidden;
+
+        /* Force a consistent frame so image + video match size */
+        aspect-ratio: 3 / 4;   /* adjust if needed: e.g., 1/1 or 4/5 */
+        background: #000;       /* avoids white flashes */
       }
 
       #profile3d_container .profile3d_img,
       #profile3d_container .profile3d_vid {
+        position: absolute;
+        top: 0; left: 0;
         width: 100%;
-        max-width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
+        height: 100%;
+        object-fit: cover;      /* key: "zoom/crop" to fill same frame */
         border-radius: 10px;
+        display: block;
         transition: opacity 260ms ease, transform 260ms ease;
       }
 
-      /* Stack video on top, but keep hidden until hover */
       #profile3d_container .profile3d_vid {
-        position: absolute;
-        top: 0;
-        left: 0;
         opacity: 0;
         transform: translateY(10px);
-        pointer-events: none; /* container handles click */
+        pointer-events: none;
       }
 
       #profile3d_container .profile3d_img {
@@ -48,7 +50,6 @@
         transform: translateY(0px);
       }
 
-      /* On hover: replace image with video (cascading) */
       #profile3d_container.is-hovered .profile3d_img {
         opacity: 0;
         transform: translateY(-10px);
@@ -58,7 +59,7 @@
         transform: translateY(0px);
       }
 
-      /* --- “Research” badge with wand icon to prompt hover --- */
+      /* ---------- “Research” badge (wand icon) ---------- */
       #profile3d_badge {
         position: absolute;
         left: 10px;
@@ -86,7 +87,7 @@
         animation: profile3d_pulse 900ms ease-in-out infinite;
       }
 
-      /* --- Fullscreen modal (click-to-view full scene 3D) --- */
+      /* ---------- Fullscreen modal ---------- */
       #fullscreen_3d_modal {
         display: none;
         position: fixed;
@@ -113,12 +114,6 @@
         font-weight: 700;
         user-select: none;
       }
-      #fullscreen_3d_caption {
-        margin-top: 10px;
-        color: #ddd;
-        font-size: 13px;
-        text-align: center;
-      }
       #fullscreen_3d_video {
         width: 100%;
         height: auto;
@@ -126,8 +121,37 @@
         border-radius: 12px;
         background: #000;
       }
+      #fullscreen_3d_caption {
+        margin-top: 10px;
+        color: #ddd;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      /* ---------- News widget styles (scoped; no body overrides) ---------- */
+      .news-widget {
+        border: 2px solid #f3f3f3;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: flex-start;
+        background-color: #f9f9f9;
+        margin: 0 auto 10px auto;
+        max-width: 800px;
+      }
+      .news-content { flex: 1; }
+      .news-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 0 6px 0;
+      }
+      .news-description {
+        font-size: 14px;
+        margin: 2px 0;
+      }
     </style>
-    <!-- ===================== /Added ===================== -->
+    <!-- ====================================================================== -->
 
   </head>
 
@@ -144,11 +168,7 @@
                 <p>I'm a PhD student at the <strong>School of Computing, National University of Singapore</strong> advised by Professor <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>. Previously, I was a Senior Data Scientist at <a href="https://in.micron.com/">Micron Technology</a> for 3 years where I worked on cutting edge AI solutions in the semiconductor industry.
                 </p>
                 <p>I have had the opportunity to work under the mentorship of <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a> at the <em>Indian Institute of Technology Bombay</em>, focusing on 3D Vision and Lifelong Learning. My experience also includes working with <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a> at the <em>International Institute of Information Technology-Hyderabad</em>, where I contributed to research in Egocentric Vision. Additionally, I served as a research assistant at the <em>Indian Institute of Technology Delhi</em>, collaborating with <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a> on projects related to Data-Efficient Learning and Biomedical Vision challenges.</p>
-                <!-- <p>
-                  I have been fortunate to work under the guidance of <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
-                  <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a> at the <a href="https://www.minds.iitb.ac.in/">Indian Institute of Technology Bombay</a> in the field of <strong>3D Vision</strong> and <strong>Lifelong learning</strong>. I also had the privilege of working under <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a> at the <a href="https://www.iiit.ac.in/">International Institute of Information Technology-Hyderabad</a> on <strong>Egocentric Vision</strong>. Additionally, I have served as a research assistant at the <a href="https://ee.iitd.ac.in/">Indian Institute of Technology Delhi</a> under the supervision of <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a> working on <strong>Data-efficient learning</strong> and <strong>Biomedical Vision</strong> problems.
 
-                </p> -->
                 <p>
                   I earned my MSc. in Data Science from <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> and my BSc. in Statistics from <a href="https://www.sxccal.edu/">St. Xavier's College (Autonomous), Kolkata</a> (under the University of Calcutta).
                 </p>
@@ -159,15 +179,7 @@
                   </span>
                   &nbsp;
 
-                  <!-- Initially showing obfuscated email
-                  <span class="scrambled-email" id="email-display"></span>
-                  <button id="reveal-email" style="cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px; display: none;">Reveal Email</button>
-                  &nbsp; -->
-                  <!-- <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp; -->
-                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i></i>Scholar</a> &nbsp;
-                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i>Scholar</a> &nbsp;
                   <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
                 </p>
 
@@ -197,7 +209,7 @@
                 </script>
               </td>
 
-              <!-- ===================== Updated: Profile 3D (cascade replace) + Research badge + click fullscreen ===================== -->
+              <!-- =================== UPDATED: Profile image replaced w/ hover video + click fullscreen =================== -->
               <td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
                 <div id="profile3d_container"
                      style="position:relative;width:100%;max-width:100%;"
@@ -206,95 +218,74 @@
                      onclick="open3dModal(event)">
 
                   <div class="profile3d_media">
-                    <!-- Base image (visible by default) -->
                     <img
                       class="profile3d_img hoverZoomLink"
-                      style="width:100%;max-width:100%;object-fit:cover;border-radius:10px;"
                       alt="profile photo"
                       src="images/IMG_4187.jpg">
 
-                    <!-- Hover video (replaces image with cascade effect) -->
-                    <video class="profile3d_vid" muted autoplay loop playsinline>
+                    <video class="profile3d_vid" muted playsinline preload="metadata">
                       <source src="images/profile_3d_recon.mp4" type="video/mp4">
                     </video>
                   </div>
 
-                  <!-- Replaces old “Hover...Click...” text with Research + wand -->
                   <div id="profile3d_badge">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <span>Research</span>
                   </div>
-
                 </div>
 
                 <script type="text/javascript">
+                  function getProfileVid() {
+                    const c = document.getElementById('profile3d_container');
+                    if (!c) return null;
+                    return c.querySelector('video.profile3d_vid');
+                  }
+
                   function profile3d_enter() {
                     const c = document.getElementById('profile3d_container');
-                    if (c) c.classList.add('is-hovered');
+                    if (!c) return;
+                    c.classList.add('is-hovered');
+
+                    const v = getProfileVid();
+                    if (v) {
+                      v.loop = true;
+                      v.muted = true;
+                      v.autoplay = true;
+                      const p = v.play();
+                      if (p && typeof p.catch === "function") p.catch(() => {});
+                    }
                   }
+
                   function profile3d_leave() {
                     const c = document.getElementById('profile3d_container');
-                    if (c) c.classList.remove('is-hovered');
+                    if (!c) return;
+                    c.classList.remove('is-hovered');
+
+                    const v = getProfileVid();
+                    if (v) {
+                      v.pause();
+                      try { v.currentTime = 0; } catch (e) {}
+                    }
                   }
+
                   // initialize
                   profile3d_leave();
                 </script>
               </td>
-              <!-- ===================== /Updated ===================== -->
+              <!-- ======================================================================================================= -->
 
             </tr>
           </tbody></table>
 
-          <!DOCTYPE html>
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>News Widget</title>
-              <style>
-                  body {
-                      font-family: Arial, sans-serif;
-                      margin: 20px;
-                  }
-                  .news-widget {
-                      border: 2px solid #f3f3f3;
-                      border-radius: 10px;
-                      padding: 15px;
-                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                      display: flex;
-                      align-items: center;
-                      background-color: #f9f9f9;
-                  }
-                  .news-icon {
-                      font-size: 24px;
-                      margin-right: 10px;
-                      color: #ff6347; /* Party symbol color */
-                  }
-                  .news-content {
-                      flex: 1;
-                  }
-                  .news-title {
-                      font-size: 18px;
-                      font-weight: bold;
-                      margin: 0 0 5px;
-                  }
-                  .news-description {
-                      font-size: 14px;
-                      margin: 0;
-                  }
-              </style>
-          </head>
-          <body>
-
-              <div class="news-widget">
-                  <!-- <div class="news-icon">🎉</div> Party symbol icon -->
-                  <div class="news-content">
-                      <p class="news-title">Recent News 🎉</p>
-                      <p class="news-description"><strong>Aug' 25</strong>: I have joined the <strong>School of Computing, National University of Singapore</strong> as a PhD student in Fall 2025.</p>
-                      <p class="news-description"><strong>Feb' 25</strong>: Our paper titled <strong>Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation</strong> is accepted at CVPR 2025. Preprint will be available soon !</p>
-                  </div>
-              </div>
-
-          </body>
+          <!-- =================== CLEANED: News widget (removed nested html/head/body) =================== -->
+          <div class="news-widget">
+            <div class="news-content">
+              <p class="news-title">Recent News 🎉</p>
+              <p class="news-description"><strong>Aug' 25</strong>: I have joined the <strong>School of Computing, National University of Singapore</strong> as a PhD student in Fall 2025.</p>
+              <p class="news-description"><strong>Feb' 25</strong>: Our paper titled <strong>Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation</strong> is accepted at CVPR 2025. Preprint will be available soon!</p>
+            </div>
+          </div>
+          <!-- ============================================================================================ -->
 
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
               <tr>
@@ -312,15 +303,14 @@
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
           <div class="two" id='wacv_image'>
-					  <img src='images/wacv_after.jpg' width=100%>
-					</div>
+            <img src='images/wacv_after.jpg' width=100%>
+          </div>
           <img src='images/wacv_before.gif' width=100%>
         </div>
         <script type="text/javascript">
           function wacv_start() {
             document.getElementById('wacv_image').style.opacity = "1";
           }
-
           function wacv_stop() {
             document.getElementById('wacv_image').style.opacity = "0";
           }
@@ -328,32 +318,25 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
-			<span class="papertitle">	
-        Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation
-</span>
-        </a>
+        <span class="papertitle">
+          Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation
+        </span>
         <br>
-				<u>Tanuj Sur</u>,
+        <u>Tanuj Sur</u>,
         <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
         <a href="https://openreview.net/profile?id=~Kaizer_Rahaman1">Kaizer Rahman</a>,
         <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a>,
         <a href="https://m-haris-khan.com/">Dr. Muhammad Haris Khan</a>,
         <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>
-				<br>
+        <br>
         <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 2025
         <br>
-
-        <!-- <br> -->
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
-        <!-- / -->
-        <!-- <a href="https://arxiv.org/abs/2410.01804">arXiv</a> -->
         <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Sur_Hyperbolic_Uncertainty-Aware_Few-Shot_Incremental_Point_Cloud_Segmentation_CVPR_2025_paper.pdf">Paper link</a>
         <p></p>
         <p>
           3D point cloud segmentation faces challenges in incremental settings, especially with limited supervision and unseen classes. While Few-Shot Learning (FSL) and Class-Incremental Learning (CIL) have been studied separately, their combination (FSCIL) is underexplored in 3D segmentation.
           To tackle this, we propose Hyperbolic Ideal Prototytpe Optimization (HIPO) framework which leverages hyperbolic Poincaré Ball classifier space and CLIP-informed Ideal Prototypes in the Poincaré sphere to capture data hierarchy, enforce prototype orthogonality, and maintain wide representational margins.
-          HIPO mitigates forgetting, enables smooth class integration, and achieves state-of-the-art results on S3DIS, ScanNetv2, and cross-dataset benchmarks for FSCIL.          
+          HIPO mitigates forgetting, enables smooth class integration, and achieves state-of-the-art results on S3DIS, ScanNetv2, and cross-dataset benchmarks for FSCIL.
         </p>
       </td>
     </tr>
@@ -370,7 +353,6 @@
           function icassp_start() {
             document.getElementById('icassp_image').style.opacity = "1";
           }
-
           function icassp_stop() {
             document.getElementById('icassp_image').style.opacity = "0";
           }
@@ -378,11 +360,7 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
-      <span class="papertitle">UIDAPLE: Unsupervised Incremental Domain
-        Adaptation through Adaptive Prompt Learning
-    </span>
-        </a>
+        <span class="papertitle">UIDAPLE: Unsupervised Incremental Domain Adaptation through Adaptive Prompt Learning</span>
         <br>
         <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
         <u>Tanuj Sur</u>,
@@ -396,14 +374,14 @@
         <a href="https://ieeexplore.ieee.org/abstract/document/10890768">Paper link</a>
         <p></p>
         <p>
-          Continual learning in deep neural networks faces challenges like catastrophic forgetting and issues with shifting data distributions. 
-          This paper addresses these challenges within the Unsupervised Incremental Domain Adaptation (UIDA) framework, where the initial source domain is labeled while subsequent domains are not. 
-          Existing methods often lack cross-domain generalization and adaptation. 
+          Continual learning in deep neural networks faces challenges like catastrophic forgetting and issues with shifting data distributions.
+          This paper addresses these challenges within the Unsupervised Incremental Domain Adaptation (UIDA) framework, where the initial source domain is labeled while subsequent domains are not.
+          Existing methods often lack cross-domain generalization and adaptation.
           We propose UIDAPLE, a new approach that uses a unified prompt across all domains, leveraging the CLIP foundation model to eliminate the need for separate domain treatments.
         </p>
       </td>
     </tr>
-    
+
     <tr onmouseout="tmi_stop()" onmouseover="tmi_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -416,7 +394,6 @@
           function tmi_start() {
             document.getElementById('tmi_image').style.opacity = "1";
           }
-
           function tmi_stop() {
             document.getElementById('tmi_image').style.opacity = "0";
           }
@@ -424,9 +401,7 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-      <span class="papertitle">Robust Prototypical Few-Shot Organ Segmentation with Regularized Neural-ODEs
-    </span>
-        </a>
+        <span class="papertitle">Robust Prototypical Few-Shot Organ Segmentation with Regularized Neural-ODEs</span>
         <br>
         <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
         <a href="https://mustafa1728.github.io/">Mustafa Chasmai*</a>,
@@ -438,7 +413,7 @@
         <a href="https://arxiv.org/abs/2208.12428">Paper link</a> | <a href="https://github.com/surtantheta/R-PNODE">Code</a>
         <p></p>
         <p>
-          The text discusses advancements in deep learning for image semantic segmentation but highlights the challenge of requiring large annotated datasets. It notes a shift towards Few-Shot Learning (FSL), particularly in medical domains where pixel-level annotations are costly. 
+          The text discusses advancements in deep learning for image semantic segmentation but highlights the challenge of requiring large annotated datasets. It notes a shift towards Few-Shot Learning (FSL), particularly in medical domains where pixel-level annotations are costly.
           The proposed solution is Regularized Prototypical Neural Ordinary Differential Equation (R-PNODE), which utilizes Neural-ODEs alongside cluster and consistency losses to improve Few-Shot Segmentation (FSS) of organs.
         </p>
       </td>
@@ -456,7 +431,6 @@
           function miccai_start() {
             document.getElementById('miccai_image').style.opacity = "1";
           }
-
           function miccai_stop() {
             document.getElementById('miccai_image').style.opacity = "0";
           }
@@ -464,9 +438,7 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-      <span class="papertitle">Adversarially Robust Prototypical Few-shot Segmentation with Neural-ODEs
-    </span>
-        </a>
+        <span class="papertitle">Adversarially Robust Prototypical Few-shot Segmentation with Neural-ODEs</span>
         <br>
         <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
         <a href="https://scholar.google.com/citations?hl=en&user=6Rt6nv4AAAAJ&view_op=list_works&sortby=pubdate">Aleti Vardhan*</a>,
@@ -479,12 +451,13 @@
         <a href="https://link.springer.com/chapter/10.1007/978-3-031-16452-1_8">Paper link</a> | <a href="https://github.com/surtantheta/PNODE-FSS">Code</a>
         <p></p>
         <p>
-          Few-shot Learning (FSL) methods are increasingly used in data-scarce environments, particularly in the medical field where obtaining annotations is costly. 
-          However, Deep Neural Networks, especially in FSL, are vulnerable to adversarial attacks, which can critically affect clinical decisions. 
+          Few-shot Learning (FSL) methods are increasingly used in data-scarce environments, particularly in the medical field where obtaining annotations is costly.
+          However, Deep Neural Networks, especially in FSL, are vulnerable to adversarial attacks, which can critically affect clinical decisions.
           This paper presents a framework aimed at enhancing the adversarial robustness of few-shot segmentation models in the medical domain.
         </p>
       </td>
     </tr>
+
     <tr onmouseout="cods_stop()" onmouseover="cods_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -497,7 +470,6 @@
           function cods_start() {
             document.getElementById('cods_image').style.opacity = "1";
           }
-
           function cods_stop() {
             document.getElementById('cods_image').style.opacity = "0";
           }
@@ -505,24 +477,20 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-      <span class="papertitle">Mathematical Expressions in Software Engineering Artifacts
-    </span>
-        </a>
+        <span class="papertitle">Mathematical Expressions in Software Engineering Artifacts</span>
         <br>
         <u>Tanuj Sur</u>,
-        <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao
-        </a>
+        <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao</a>
         <br>
         <em>CODS-COMAD: International Conference on Data Science and Management of Data</em>, 2023
         <br>
         <a href="https://dl.acm.org/doi/10.1145/3570991.3571033">Paper link</a>
         <p></p>
         <p>
-          Mathematical expressions are essential not only for numerical calculations but also for enhancing clarity in discussions and documentation. 
-          They are present in various software engineering artifacts like source code, documentation, and bug reports. 
-          Research shows that these expressions impact the accuracy of commit message generation tools. 
-          To support future research, a dataset of 
-          bug reports with annotated mathematical expressions has been created and shared, along with a tool called MEDSEA to identify these expressions.
+          Mathematical expressions are essential not only for numerical calculations but also for enhancing clarity in discussions and documentation.
+          They are present in various software engineering artifacts like source code, documentation, and bug reports.
+          Research shows that these expressions impact the accuracy of commit message generation tools.
+          To support future research, a dataset of bug reports with annotated mathematical expressions has been created and shared, along with a tool called MEDSEA to identify these expressions.
         </p>
       </td>
     </tr>
@@ -532,11 +500,12 @@
         <td>
           <h2>Projects</h2>
           <p>
-            I have highlighted some of the projects that I have been a part of. 
+            I have highlighted some of the projects that I have been a part of.
           </p>
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
     <tr onmouseout="tram_stop()" onmouseover="tram_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
@@ -551,16 +520,13 @@
           function tram_start() {
             document.getElementById('tram').style.opacity = "1";
           }
-
           function tram_stop() {
             document.getElementById('tram').style.opacity = "0";
           }
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-			<span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction
-</span>
-        </a>
+        <span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction</span>
         <br>
         <p>
          We are the first to jointly reconstruct first-person, third-Person Human Mesh Reconstruction along with scene point cloud for Aria Digital Twin Dataset. We leverage <a href="https://egoallo.github.io/">EgoAllo</a> and <a href="https://fanegg.github.io/Human3R/">Human3R</a> to accomplish both scene and human mesh reconstruction.
@@ -569,6 +535,7 @@
         <p></p>
       </td>
     </tr>
+
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -582,7 +549,6 @@
           function cat3d_start() {
             document.getElementById('cat3d_image').style.opacity = "1";
           }
-
           function cat3d_stop() {
             document.getElementById('cat3d_image').style.opacity = "0";
           }
@@ -590,11 +556,10 @@
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
       <a href="https://mobility.iiit.ac.in/drivesim/index.html">
-			<span class="papertitle">Egocentric Driver Attention
-</span>
-        </a>
+        <span class="papertitle">Egocentric Driver Attention</span>
+      </a>
         <br>
-				<strong>Tanuj Sur</strong>,
+        <strong>Tanuj Sur</strong>,
         <a href="https://sites.google.com/site/shankarsetty/home?authuser=0">Dr. Shankar Gangisetty</a>,
         <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
         <p></p>
@@ -603,6 +568,7 @@
         </p>
       </td>
     </tr>
+
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
       <tr>
         <td>
@@ -610,8 +576,8 @@
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
-      
       <tr>
         <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iiit-logo2.jpg"></td>
         <td width="75%" valign="center">
@@ -623,17 +589,16 @@
         <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iitb-logo1_new.png"></td>
         <td width="75%" valign="center">
           <a href="https://www.minds.iitb.ac.in/">Center of Machine Intelligence & Data Science (CMInDS)</a>, Indian Institute of Technology Bombay under <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
-          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.   
+          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.
         </td>
       </tr>
-
       <tr>
         <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/tcs-logo1.jpg"></td>
         <td width="75%" valign="center">
           <a href="https://www.tcs.com/what-we-do/research">TCS Research and Innovation Labs</a>
         </td>
       </tr>
-    
+
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
       <tr>
         <td>
@@ -641,6 +606,7 @@
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody>
       <tr>
         <td style="padding:20px;width:25%;vertical-align:middle">
@@ -673,87 +639,66 @@
           1. <a href="https://lightning-postage-c9f.notion.site/Elevating-Student-Internship-Experiences-Alumni-Mentored-Internship-at-CMI-ad8e99c56f044db9b5445602f3ead74f">Industry Project instructor</a> on "Web User Interface (UI) detection from website images".
           <br>
           <br>
-          2. Teaching Assistant for Data Mining & Machine Learning under Prof. <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>. 
+          2. Teaching Assistant for Data Mining & Machine Learning under Prof. <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>.
         </td>
       </tr>
+
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
           <td style="padding:0px">
             <br>
-            <!-- <p style="text-align:right;font-size:small;">
-              The code for this website is adopted from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron's website</a>.
-            </p> -->
           </td>
         </tr>
       </tbody></table>
+
     </td>
   </tr>
-</table> 
+</table>
 
-<!-- ===================== Added: Fullscreen modal DOM ===================== -->
-<div id="fullscreen_3d_modal" onclick="close3dModal()">
+<!-- =================== Fullscreen modal HTML (click full scene 3D) =================== -->
+<div id="fullscreen_3d_modal" onclick="close3dModal(event)">
   <div id="fullscreen_3d_panel" onclick="event.stopPropagation();">
-    <div id="fullscreen_3d_close" onclick="close3dModal()">×</div>
-    <video id="fullscreen_3d_video" controls playsinline muted>
+    <div id="fullscreen_3d_close" onclick="close3dModal(event)">&times;</div>
+    <video id="fullscreen_3d_video" controls playsinline preload="metadata">
       <source src="images/profile_3d_recon.mp4" type="video/mp4">
     </video>
-    <div id="fullscreen_3d_caption">Full scene 3D (click outside or press Esc to close)</div>
+    <div id="fullscreen_3d_caption">Click outside (or press ESC) to close.</div>
   </div>
 </div>
-<!-- ===================== /Added ===================== -->
 
-<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
-
-<!-- ===================== Added: Fullscreen modal logic ===================== -->
-<script>
+<script type="text/javascript">
   function open3dModal(e) {
     if (e) e.preventDefault();
 
     const modal = document.getElementById('fullscreen_3d_modal');
-    const vid = document.getElementById('fullscreen_3d_video');
+    const v = document.getElementById('fullscreen_3d_video');
 
-    if (!modal || !vid) return;
-
-    // show
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-
-    // attempt to play (may require user gesture; click qualifies)
-    try {
-      vid.currentTime = 0;
-      vid.play();
-    } catch (err) {
-      // ignore autoplay failures
+    if (modal) modal.style.display = 'flex';
+    if (v) {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
     }
   }
 
-  function close3dModal() {
+  function close3dModal(e) {
+    if (e) e.preventDefault();
+
     const modal = document.getElementById('fullscreen_3d_modal');
-    const vid = document.getElementById('fullscreen_3d_video');
+    const v = document.getElementById('fullscreen_3d_video');
 
-    if (vid) {
-      try {
-        vid.pause();
-        vid.currentTime = 0;
-      } catch (err) {
-        // ignore
-      }
+    if (v) {
+      v.pause();
+      try { v.currentTime = 0; } catch (err) {}
     }
-
     if (modal) modal.style.display = 'none';
-    document.body.style.overflow = '';
   }
 
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const modal = document.getElementById('fullscreen_3d_modal');
-      if (modal && modal.style.display === 'flex') close3dModal();
-    }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close3dModal(e);
   });
 </script>
-<!-- ===================== /Added ===================== -->
+<!-- ================================================================================ -->
 
+<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
 </body>
-<!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsurtantheta.github.io&count_bg=%2323B538&title_bg=%231E1D1D&icon=phabricator.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/></a> -->
 </html>
