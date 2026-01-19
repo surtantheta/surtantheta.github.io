@@ -10,7 +10,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+
+    <!-- ===== Added for Profile 3D hover + fullscreen modal ===== -->
+    <style>
+      /* Make the profile block behave like the other hover previews in the template */
+      #profile3d_container { cursor: pointer; }
+      #profile3d_hint {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        background: rgba(0,0,0,0.55);
+        color: #fff;
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.2;
+        pointer-events: none;
+      }
+
+      /* Fullscreen modal (click-to-view full scene 3D) */
+      #fullscreen_3d_modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.85);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+      #fullscreen_3d_panel {
+        position: relative;
+        width: min(92vw, 1100px);
+        max-height: 90vh;
+      }
+      #fullscreen_3d_close {
+        position: absolute;
+        top: -44px;
+        right: 0;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+        font-weight: 700;
+        user-select: none;
+      }
+      #fullscreen_3d_caption {
+        margin-top: 10px;
+        color: #ddd;
+        font-size: 13px;
+        text-align: center;
+      }
+      #fullscreen_3d_video {
+        width: 100%;
+        height: auto;
+        max-height: 90vh;
+        border-radius: 12px;
+        background: #000;
+      }
+    </style>
+    <!-- ===== End added ===== -->
+
   </head>
 
   <body>
@@ -40,62 +100,11 @@
                     <a href="javascript:void(0);" id="show-email" style="text-decoration: none;">Email</a>
                   </span>
                   &nbsp;
-                
-                  <!-- Initially showing obfuscated email
-                  <span class="scrambled-email" id="email-display"></span>
-                  <button id="reveal-email" style="cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px; display: none;">Reveal Email</button>
-                  &nbsp; -->
-                  <!-- <a href="mailto:tanuj@cmi.ac.in">Email</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/TanujSur-bio.txt">Bio</a> &nbsp;/&nbsp; -->
+
                   <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i></i>Scholar</a> &nbsp;
-                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
                   <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
                 </p>
-           
 
-                <!-- <script>
-                  // New real email
-                  const realEmail = "surtantheta@gmail.com";
-                
-                  // Function to generate the initial scrambled email
-                  function generateObfuscatedEmail() {
-                    const emailParts = realEmail.split('@');
-                    const localPart = emailParts[0];
-                    const domainPart = emailParts[1];
-                
-                    // Randomize both parts
-                    const randomLocal = generateRandomString(localPart.length);
-                    const randomDomain = generateRandomString(domainPart.length);
-                
-                    return `${randomLocal}@${randomDomain}`;
-                  }
-                
-                  // Generate random string of the same length as input string
-                  function generateRandomString(length) {
-                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                    let result = '';
-                    for (let i = 0; i < length; i++) {
-                      result += characters.charAt(Math.floor(Math.random() * characters.length));
-                    }
-                    return result;
-                  }
-                
-                  // Set initial scrambled email and show the "Reveal Email" button
-                  document.getElementById('email-link').addEventListener('click', function() {
-                    const scrambledEmail = generateObfuscatedEmail();
-                    document.getElementById('email-display').innerText = scrambledEmail;
-                    document.getElementById('reveal-email').style.display = 'inline-block'; // Show the reveal button
-                  });
-                
-                  // Reveal the real email when button is clicked
-                  document.getElementById("reveal-email").addEventListener("click", function() {
-                    document.getElementById("email-display").innerHTML = `<a href="mailto:${realEmail}">${realEmail}</a>`;
-                    // Disable the button after revealing
-                    this.disabled = true;
-                    this.style.backgroundColor = "#ccc"; // Change button color when disabled
-                  });
-                </script> -->
                 <!-- Hidden Email Section -->
               <div id="email-content" style="text-align:center; margin-top:10px; display:none;">
                 <span id="scrambled-email">su•••@g•••.com</span>
@@ -121,18 +130,56 @@
                 });
               </script>
               </td>
-              <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="images/IMG_4187.jpg">
-                  <img 
-                    style="width:100%;max-width:100%;object-fit:cover;border-radius:10px;" 
-                    alt="profile photo" 
-                    src="images/IMG_4187.jpg" 
+
+              <!-- ===== UPDATED: Profile photo with hover 3D + click fullscreen 3D ===== -->
+              <td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
+                <div id="profile3d_container"
+                     class="one"
+                     style="position:relative;width:100%;max-width:100%;"
+                     onmouseover="profile3d_start()"
+                     onmouseout="profile3d_stop()"
+                     onclick="open3dModal(event)">
+
+                  <!-- Hover 3D video (Option A: show on hover via opacity; keeps looping) -->
+                  <div class="two" id="profile3d_hover" style="opacity:0;">
+                    <video muted autoplay loop playsinline
+                           style="width:100%;max-width:100%;object-fit:cover;border-radius:10px;display:block;">
+                      <!-- Change filename if needed -->
+                      <source src="images/profile_3d_recon.mp4" type="video/mp4">
+                    </video>
+                  </div>
+
+                  <!-- Base image -->
+                  <img
+                    style="width:100%;max-width:100%;object-fit:cover;border-radius:10px;display:block;"
+                    alt="profile photo"
+                    src="images/IMG_4187.jpg"
                     class="hoverZoomLink">
-                </a>
+
+                  <div id="profile3d_hint">
+                    Hover: 3D preview<br>
+                    Click: full scene 3D
+                  </div>
+                </div>
+
+                <script type="text/javascript">
+                  function profile3d_start() {
+                    const el = document.getElementById('profile3d_hover');
+                    if (el) el.style.opacity = "1";
+                  }
+                  function profile3d_stop() {
+                    const el = document.getElementById('profile3d_hover');
+                    if (el) el.style.opacity = "0";
+                  }
+                  // initialize hidden
+                  profile3d_stop();
+                </script>
               </td>
+              <!-- ===== END UPDATED ===== -->
 
             </tr>
           </tbody></table>
+
           <!DOCTYPE html>
           <head>
               <meta charset="UTF-8">
@@ -216,11 +263,9 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
-			<span class="papertitle">	
+			<span class="papertitle">
         Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation
 </span>
-        </a>
         <br>
 				<u>Tanuj Sur</u>,
         <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
@@ -231,17 +276,12 @@
 				<br>
         <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 2025
         <br>
-
-        <!-- <br> -->
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
-        <!-- / -->
-        <!-- <a href="https://arxiv.org/abs/2410.01804">arXiv</a> -->
         <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Sur_Hyperbolic_Uncertainty-Aware_Few-Shot_Incremental_Point_Cloud_Segmentation_CVPR_2025_paper.pdf">Paper link</a>
         <p></p>
         <p>
           3D point cloud segmentation faces challenges in incremental settings, especially with limited supervision and unseen classes. While Few-Shot Learning (FSL) and Class-Incremental Learning (CIL) have been studied separately, their combination (FSCIL) is underexplored in 3D segmentation.
           To tackle this, we propose Hyperbolic Ideal Prototytpe Optimization (HIPO) framework which leverages hyperbolic Poincaré Ball classifier space and CLIP-informed Ideal Prototypes in the Poincaré sphere to capture data hierarchy, enforce prototype orthogonality, and maintain wide representational margins.
-          HIPO mitigates forgetting, enables smooth class integration, and achieves state-of-the-art results on S3DIS, ScanNetv2, and cross-dataset benchmarks for FSCIL.          
+          HIPO mitigates forgetting, enables smooth class integration, and achieves state-of-the-art results on S3DIS, ScanNetv2, and cross-dataset benchmarks for FSCIL.
         </p>
       </td>
     </tr>
@@ -266,11 +306,9 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
       <span class="papertitle">UIDAPLE: Unsupervised Incremental Domain
         Adaptation through Adaptive Prompt Learning
     </span>
-        </a>
         <br>
         <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
         <u>Tanuj Sur</u>,
@@ -281,20 +319,17 @@
         <br>
         <em>International Conference on Acoustics, Speech, and Signal Processing</em>, 2025
         <br>
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
-        <!-- / -->
-        <!-- <a href="https://arxiv.org/abs/2410.01804">arXiv</a> -->
         <a href="https://ieeexplore.ieee.org/abstract/document/10890768">Paper link</a>
         <p></p>
         <p>
-          Continual learning in deep neural networks faces challenges like catastrophic forgetting and issues with shifting data distributions. 
-          This paper addresses these challenges within the Unsupervised Incremental Domain Adaptation (UIDA) framework, where the initial source domain is labeled while subsequent domains are not. 
-          Existing methods often lack cross-domain generalization and adaptation. 
+          Continual learning in deep neural networks faces challenges like catastrophic forgetting and issues with shifting data distributions.
+          This paper addresses these challenges within the Unsupervised Incremental Domain Adaptation (UIDA) framework, where the initial source domain is labeled while subsequent domains are not.
+          Existing methods often lack cross-domain generalization and adaptation.
           We propose UIDAPLE, a new approach that uses a unified prompt across all domains, leveraging the CLIP foundation model to eliminate the need for separate domain treatments.
         </p>
       </td>
     </tr>
-    
+
     <tr onmouseout="tmi_stop()" onmouseover="tmi_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -315,10 +350,8 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
-      <span class="papertitle">Robust Prototypical Few‑Shot Organ Segmentation with Regularized Neural‑ODEs
+      <span class="papertitle">Robust Prototypical Few-Shot Organ Segmentation with Regularized Neural-ODEs
     </span>
-        </a>
         <br>
         <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
         <a href="https://mustafa1728.github.io/">Mustafa Chasmai*</a>,
@@ -327,11 +360,10 @@
         <br>
         <em>IEEE Transactions on Medical Imaging</em>, 2023 (Impact Factor: <strong>10.6</strong>)
         <br>
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
         <a href="https://arxiv.org/abs/2208.12428">Paper link</a> | <a href="https://github.com/surtantheta/R-PNODE">Code</a>
         <p></p>
         <p>
-          The text discusses advancements in deep learning for image semantic segmentation but highlights the challenge of requiring large annotated datasets. It notes a shift towards Few-Shot Learning (FSL), particularly in medical domains where pixel-level annotations are costly. 
+          The text discusses advancements in deep learning for image semantic segmentation but highlights the challenge of requiring large annotated datasets. It notes a shift towards Few-Shot Learning (FSL), particularly in medical domains where pixel-level annotations are costly.
           The proposed solution is Regularized Prototypical Neural Ordinary Differential Equation (R-PNODE), which utilizes Neural-ODEs alongside cluster and consistency losses to improve Few-Shot Segmentation (FSS) of organs.
         </p>
       </td>
@@ -357,10 +389,8 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
-      <span class="papertitle">Adversarially Robust Prototypical Few‑shot Segmentation with Neural‑ODEs
+      <span class="papertitle">Adversarially Robust Prototypical Few-shot Segmentation with Neural-ODEs
     </span>
-        </a>
         <br>
         <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
         <a href="https://scholar.google.com/citations?hl=en&user=6Rt6nv4AAAAJ&view_op=list_works&sortby=pubdate">Aleti Vardhan*</a>,
@@ -370,16 +400,16 @@
         <br>
         <em>International Conference on Medical Image Computing and Computer Assisted Intervention</em>, 2022
         <br>
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
         <a href="https://link.springer.com/chapter/10.1007/978-3-031-16452-1_8">Paper link</a> | <a href="https://github.com/surtantheta/PNODE-FSS">Code</a>
         <p></p>
         <p>
-          Few-shot Learning (FSL) methods are increasingly used in data-scarce environments, particularly in the medical field where obtaining annotations is costly. 
-          However, Deep Neural Networks, especially in FSL, are vulnerable to adversarial attacks, which can critically affect clinical decisions. 
+          Few-shot Learning (FSL) methods are increasingly used in data-scarce environments, particularly in the medical field where obtaining annotations is costly.
+          However, Deep Neural Networks, especially in FSL, are vulnerable to adversarial attacks, which can critically affect clinical decisions.
           This paper presents a framework aimed at enhancing the adversarial robustness of few-shot segmentation models in the medical domain.
         </p>
       </td>
     </tr>
+
     <tr onmouseout="cods_stop()" onmouseover="cods_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -400,10 +430,8 @@
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
-        <!-- <a href="https://ever.github.io/"> -->
       <span class="papertitle">Mathematical Expressions in Software Engineering Artifacts
     </span>
-        </a>
         <br>
         <u>Tanuj Sur</u>,
         <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao
@@ -411,14 +439,13 @@
         <br>
         <em>CODS-COMAD: International Conference on Data Science and Management of Data</em>, 2023
         <br>
-        <!-- <a href="https://half-potato.gitlab.io/posts/ever/">project page</a> -->
         <a href="https://dl.acm.org/doi/10.1145/3570991.3571033">Paper link</a>
         <p></p>
         <p>
-          Mathematical expressions are essential not only for numerical calculations but also for enhancing clarity in discussions and documentation. 
-          They are present in various software engineering artifacts like source code, documentation, and bug reports. 
-          Research shows that these expressions impact the accuracy of commit message generation tools. 
-          To support future research, a dataset of 
+          Mathematical expressions are essential not only for numerical calculations but also for enhancing clarity in discussions and documentation.
+          They are present in various software engineering artifacts like source code, documentation, and bug reports.
+          Research shows that these expressions impact the accuracy of commit message generation tools.
+          To support future research, a dataset of
           bug reports with annotated mathematical expressions has been created and shared, along with a tool called MEDSEA to identify these expressions.
         </p>
       </td>
@@ -429,11 +456,12 @@
         <td>
           <h2>Projects</h2>
           <p>
-            I have highlighted some of the projects that I have been a part of. 
+            I have highlighted some of the projects that I have been a part of.
           </p>
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
     <tr onmouseout="tram_stop()" onmouseover="tram_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
@@ -457,7 +485,6 @@
       <td style="padding:20px;width:75%;vertical-align:middle">
 			<span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction
 </span>
-        </a>
         <br>
         <p>
          We are the first to jointly reconstruct first-person, third-Person Human Mesh Reconstruction along with scene point cloud for Aria Digital Twin Dataset. We leverage <a href="https://egoallo.github.io/">EgoAllo</a> and <a href="https://fanegg.github.io/Human3R/">Human3R</a> to accomplish both scene and human mesh reconstruction.
@@ -466,6 +493,7 @@
         <p></p>
       </td>
     </tr>
+
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -500,6 +528,7 @@
         </p>
       </td>
     </tr>
+
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
       <tr>
         <td>
@@ -507,8 +536,8 @@
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
-      
       <tr>
         <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iiit-logo2.jpg"></td>
         <td width="75%" valign="center">
@@ -520,7 +549,7 @@
         <td style="padding:20px;width:20%;vertical-align:middle"><img src="images/iitb-logo1_new.png"></td>
         <td width="75%" valign="center">
           <a href="https://www.minds.iitb.ac.in/">Center of Machine Intelligence & Data Science (CMInDS)</a>, Indian Institute of Technology Bombay under <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
-          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.   
+          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.
         </td>
       </tr>
 
@@ -530,7 +559,7 @@
           <a href="https://www.tcs.com/what-we-do/research">TCS Research and Innovation Labs</a>
         </td>
       </tr>
-    
+
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
       <tr>
         <td>
@@ -538,6 +567,7 @@
         </td>
       </tr>
     </tbody></table>
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody>
       <tr>
         <td style="padding:20px;width:25%;vertical-align:middle">
@@ -570,22 +600,63 @@
           1. <a href="https://lightning-postage-c9f.notion.site/Elevating-Student-Internship-Experiences-Alumni-Mentored-Internship-at-CMI-ad8e99c56f044db9b5445602f3ead74f">Industry Project instructor</a> on "Web User Interface (UI) detection from website images".
           <br>
           <br>
-          2. Teaching Assistant for Data Mining & Machine Learning under Prof. <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>. 
+          2. Teaching Assistant for Data Mining & Machine Learning under Prof. <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>.
         </td>
       </tr>
+
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
           <td style="padding:0px">
             <br>
-            <!-- <p style="text-align:right;font-size:small;">
-              The code for this website is adopted from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron's website</a>.
-            </p> -->
           </td>
         </tr>
       </tbody></table>
     </td>
   </tr>
-</table> 
+</table>
+
+<!-- ================= FULLSCREEN 3D MODAL (Added) ================= -->
+<div id="fullscreen_3d_modal" onclick="close3dModal()">
+  <div id="fullscreen_3d_panel" onclick="event.stopPropagation();">
+    <div id="fullscreen_3d_close" onclick="close3dModal()">×</div>
+    <video id="fullscreen_3d_video" controls playsinline>
+      <!-- Change filename if needed (same as hover preview by default) -->
+      <source src="images/profile_3d_recon.mp4" type="video/mp4">
+    </video>
+    <div id="fullscreen_3d_caption">Click outside the video or press ESC to close.</div>
+  </div>
+</div>
+
+<script>
+  function open3dModal(e) {
+    if (e) e.preventDefault();
+
+    const modal = document.getElementById('fullscreen_3d_modal');
+    const vid = document.getElementById('fullscreen_3d_video');
+
+    modal.style.display = 'flex';
+
+    // Start playing when opened (safe even if user must click due to browser policy)
+    try { vid.currentTime = 0; } catch (_) {}
+    const p = vid.play();
+    if (p && typeof p.catch === 'function') p.catch(() => {});
+  }
+
+  function close3dModal() {
+    const modal = document.getElementById('fullscreen_3d_modal');
+    const vid = document.getElementById('fullscreen_3d_video');
+
+    modal.style.display = 'none';
+    try { vid.pause(); } catch (_) {}
+    try { vid.currentTime = 0; } catch (_) {}
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') close3dModal();
+  });
+</script>
+<!-- ================= END MODAL ================= -->
+
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
 </body>
 <!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsurtantheta.github.io&count_bg=%2323B538&title_bg=%231E1D1D&icon=phabricator.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/></a> -->
