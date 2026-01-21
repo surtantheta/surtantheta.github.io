@@ -212,10 +212,10 @@
               <!-- =================== UPDATED: Profile image replaced w/ hover video + click fullscreen =================== -->
               <td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
                 <div id="profile3d_container"
-                     style="position:relative;width:100%;max-width:100%;"
-                     onmouseover="profile3d_enter()"
-                     onmouseout="profile3d_leave()"
-                     onclick="open3dModal(event)">
+                  style="position:relative;width:100%;max-width:100%;"
+                  onmouseover="profile3d_enter()"
+                  onmouseout="profile3d_leave()">
+
 
                   <div class="profile3d_media">
                     <img
@@ -655,7 +655,7 @@
   </tr>
 </table>
 
-<!-- =================== Fullscreen modal HTML (click full scene 3D) =================== -->
+<!-- =================== Fullscreen modal HTML (click full scene 3D) ===================
 <div id="fullscreen_3d_modal" onclick="close3dModal(event)">
   <div id="fullscreen_3d_panel" onclick="event.stopPropagation();">
     <div id="fullscreen_3d_close" onclick="close3dModal(event)">&times;</div>
@@ -664,9 +664,9 @@
     </video>
     <div id="fullscreen_3d_caption">Click outside (or press ESC) to close.</div>
   </div>
-</div>
+</div> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   function open3dModal(e) {
     if (e) e.preventDefault();
 
@@ -696,7 +696,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') close3dModal(e);
   });
-</script>
+</script> -->
 <!-- ================================================================================ -->
 
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
