@@ -134,17 +134,16 @@ span.highlight {
   background-color: #ffffd0;
 }
 
-/* OccluReStyle3D: force true overlay + crop to remove black bars */
 .occlu-card{
   position: relative;
   overflow: hidden;
-  border-radius: 10px;            /* optional */
-  aspect-ratio: 4 / 3;            /* pick the look you want; see note below */
+  border-radius: 10px;   /* keep if you like rounded corners */
+  aspect-ratio: 4 / 3;   /* or whatever you set */
 }
 
 .occlu-card .two{
   position: absolute;
-  inset: 0;                       /* top:0 right:0 bottom:0 left:0 */
+  inset: 0;
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 2;
@@ -155,12 +154,7 @@ span.highlight {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;              /* crops instead of letterboxing */
+  object-fit: cover;
   object-position: 50% 50%;
-  transform: scale(1.06);         /* mild zoom to hide borders */
-}
-
-.occlu-card img,
-.occlu-card video{
-  object-position: 50% 40%;   /* move up a bit */
+  transform: scale(1.01);   /* <<< was 1.06, now just a tiny trim */
 }
