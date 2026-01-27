@@ -535,35 +535,22 @@
         <p></p>
       </td>
     </tr>
-    <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
+    <tr>
       <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <a href="images/occlurestyle3d.mp4" class="media-box">
-            <video class="media" muted autoplay loop playsinline>
-              <source src="images/occlurestyle3d.mp4" type="video/mp4">
-            </video>
-          </a>
-
-          <img class="media media-static" src="images/occlu_before.png" alt="Before">
-        </div>
-
-        <script type="text/javascript">
-          function tram_start() {
-            document.getElementById('occlu').style.opacity = "1";
-          }
-          function tram_stop() {
-            document.getElementById('occlu').style.opacity = "0";
-          }
-        </script>
+        <a href="images/occlurestyle3d.mp4" class="media-box">
+          <video class="media" muted autoplay loop playsinline>
+            <source src="images/occlurestyle3d.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Click the video to expand.</div>
+        </a>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
         <br>
         <p>
-         We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion — motivating Temporally Consistent Occlusion-Aware Stylization. We leverage <a href="https://aidemos.meta.com/segment-anything">SAM</a> to segment humans per frame and obtain a human-specific occlusion mask followed by inpainting human masked regions using <a href="https://shangchenzhou.com/projects/ProPainter/">ProPainter</a>. Finally, we apply <a href="https://restyle3d.github.io/">ReStyle3D</a> for appearance transfer to the inpainted background video (treated as a static scene proxy) and compose original humans back onto the stylized background to obtain a final “styled scene with humans”.
-        <br>
-         <a href="https://github.com/surtantheta/OccluReStyle3D">Code</a>
-        <p></p>
+          We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion — motivating Temporally Consistent Occlusion-Aware Stylization...
+        </p>
+        <a href="https://github.com/surtantheta/OccluReStyle3D">Code</a>
       </td>
     </tr>
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
