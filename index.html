@@ -509,104 +509,111 @@
 <table width="100%" align="center" border="0" cellpadding="20">
   <tbody>
 
-    <table width="100%" align="center" border="0" cellpadding="20"><tbody></tbody>
-    <tr onmouseout="tram_stop()" onmouseover="tram_start()">
+    <!-- EgoHuman3R -->
+    <tr onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
-          <div class="two" id='tram'><a href="images/egohuman3r.mp4"><video  width=100% height=100% muted autoplay loop>
-          <source src="images/egohuman3r.mp4" type="video/mp4" width="110%" height="100%"></a>
-          Click the video to expand.
-          </video></div>
-          <img src='images/tram1_before.png' width="160">
+          <div class="two" id="egohuman_vid">
+            <a href="images/egohuman3r.mp4" target="_blank" rel="noopener">
+              <video width="100%" height="100%" muted autoplay loop playsinline style="display:block;">
+                <source src="images/egohuman3r.mp4" type="video/mp4">
+              </video>
+            </a>
+          </div>
+          <img src="images/tram1_before.png" width="160" style="display:block;">
         </div>
         <script type="text/javascript">
-          function tram_start() {
-            document.getElementById('tram').style.opacity = "1";
-          }
-          function tram_stop() {
-            document.getElementById('tram').style.opacity = "0";
-          }
+          function egohuman_start() { document.getElementById('egohuman_vid').style.opacity = "1"; }
+          function egohuman_stop()  { document.getElementById('egohuman_vid').style.opacity = "0"; }
+          egohuman_stop();
         </script>
       </td>
+
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">EgoHuman3R: Bridging First-Person and Third-Person Human-Scene Reconstruction</span>
         <br>
         <p>
-         We are the first to jointly reconstruct first-person, third-Person Human Mesh Reconstruction along with scene point cloud for Aria Digital Twin Dataset. We leverage <a href="https://egoallo.github.io/">EgoAllo</a> and <a href="https://fanegg.github.io/Human3R/">Human3R</a> to accomplish both scene and human mesh reconstruction.
-        <br>
-         <a href="https://github.com/surtantheta/EgoHuman3R">Code</a>
-        <p></p>
+          We are the first to jointly reconstruct first-person, third-Person Human Mesh Reconstruction along with scene point cloud for Aria Digital Twin Dataset. We leverage
+          <a href="https://egoallo.github.io/">EgoAllo</a> and <a href="https://fanegg.github.io/Human3R/">Human3R</a> to accomplish both scene and human mesh reconstruction.
+          <br>
+          <a href="https://github.com/surtantheta/EgoHuman3R">Code</a>
+        </p>
       </td>
     </tr>
-<div class="one" style="position:relative; width:160px; height:160px; display:inline-block; overflow:hidden;">
-  <!-- VIDEO OVERLAY (same size, same position) -->
-  <div class="two" id="occlu"
-       style="position:absolute; top:0; left:0; width:160px; height:160px; opacity:0; z-index:2;">
-    <video muted autoplay loop playsinline
-           style="position:absolute; top:0; left:0; width:160px; height:160px; display:block; object-fit:cover;">
-      <source src="images/occlurestyle3d.mp4" type="video/mp4">
-    </video>
-  </div>
 
-  <!-- BASE IMAGE (same size, same position) -->
-  <img id="occlu_img" src="images/occlu_before.png"
-       style="position:absolute; top:0; left:0; width:160px; height:160px; display:block; object-fit:cover; z-index:1;">
-</div>
+    <!-- OccluReStyle3D -->
+    <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id="occlu_vid">
+            <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener">
+              <video width="100%" height="100%" muted autoplay loop playsinline style="display:block;">
+                <source src="images/occlurestyle3d.mp4" type="video/mp4">
+              </video>
+            </a>
+          </div>
+          <img src="images/occlu_before.png" width="160" style="display:block;">
+        </div>
+        <script type="text/javascript">
+          function occlu_start() { document.getElementById('occlu_vid').style.opacity = "1"; }
+          function occlu_stop()  { document.getElementById('occlu_vid').style.opacity = "0"; }
+          occlu_stop();
+        </script>
+      </td>
 
-<script type="text/javascript">
-  function occlu_start() { document.getElementById('occlu').style.opacity = "1"; }
-  function occlu_stop()  { document.getElementById('occlu').style.opacity = "0"; }
-  occlu_stop();
-</script>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
+        <br>
+        <p>
+          We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion — motivating Temporally Consistent Occlusion-Aware Stylization.
+          We leverage <a href="https://aidemos.meta.com/segment-anything">SAM</a> to segment humans per frame and obtain a human-specific occlusion mask followed by inpainting human masked regions using
+          <a href="https://shangchenzhou.com/projects/ProPainter/">ProPainter</a>. Finally, we apply <a href="https://restyle3d.github.io/">ReStyle3D</a> for appearance transfer to the inpainted background video
+          (treated as a static scene proxy) and compose original humans back onto the stylized background to obtain a final “styled scene with humans”.
+          <br>
+          <a href="https://github.com/surtantheta/OccluReStyle3D">Code</a>
+        </p>
+      </td>
+    </tr>
 
-  </td>
-
-  <td style="padding:20px;width:75%;vertical-align:middle">
-    <a href="data/occlurestyle3d.html">
-      <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
-    </a>
-    <br>
-    <p>
-      We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion – motivating Temporally Consistent Occlusion-Aware Stylization. We leverage SAM to segment humans per frame and obtain a human-specific occlusion mask followed by inpainting human masked regions using ProPainter. Finally, we apply ReStyle3D for appearance transfer to the inpainted background video (treated as a static scene proxy) and compose original humans back onto the stylized background to obtain a final “styled scene with humans”.
-    </p>
-    <a href="#">Code</a>
-  </td>
-</tr>
+    <!-- Cat3D (kept working, but fixed markup) -->
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
-          <div class="two" id='cat3d_image'><a href="images/cat3d1.mp4"><video  width=100% height=100% muted autoplay loop>
-          <source src="images/cat3d1.mp4" type="video/mp4" width="100%" height="100%"></a>
-          Click the video to expand.
-          </video></div>
-          <img src='images/cat3d1.png' width="160">
+          <div class="two" id="cat3d_image">
+            <a href="images/cat3d1.mp4" target="_blank" rel="noopener">
+              <video width="100%" height="100%" muted autoplay loop playsinline style="display:block;">
+                <source src="images/cat3d1.mp4" type="video/mp4">
+              </video>
+            </a>
+          </div>
+          <img src="images/cat3d1.png" width="160" style="display:block;">
         </div>
         <script type="text/javascript">
-          function cat3d_start() {
-            document.getElementById('cat3d_image').style.opacity = "1";
-          }
-          function cat3d_stop() {
-            document.getElementById('cat3d_image').style.opacity = "0";
-          }
+          function cat3d_start() { document.getElementById('cat3d_image').style.opacity = "1"; }
+          function cat3d_stop()  { document.getElementById('cat3d_image').style.opacity = "0"; }
+          cat3d_stop();
         </script>
       </td>
+
       <td style="padding:20px;width:75%;vertical-align:middle">
-      <a href="https://mobility.iiit.ac.in/drivesim/index.html">
-        <span class="papertitle">Egocentric Driver Attention</span>
-      </a>
+        <a href="https://mobility.iiit.ac.in/drivesim/index.html">
+          <span class="papertitle">Egocentric Driver Attention</span>
+        </a>
         <br>
         <strong>Tanuj Sur</strong>,
         <a href="https://sites.google.com/site/shankarsetty/home?authuser=0">Dr. Shankar Gangisetty</a>,
         <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
-        <p></p>
         <p>
-         We curate a dataset comprising of egocentric driver attention maps in simulated evironments built upon <a href="https://carla.org/">CARLA</a> and <a href="https://www.unrealengine.com/en-US">Unreal Engine</a>. We use <a href="https://www.projectaria.com/">Meta's Eye Tracking ARIA glasses</a> for registering user gaze.
+          We curate a dataset comprising of egocentric driver attention maps in simulated evironments built upon
+          <a href="https://carla.org/">CARLA</a> and <a href="https://www.unrealengine.com/en-US">Unreal Engine</a>.
+          We use <a href="https://www.projectaria.com/">Meta's Eye Tracking ARIA glasses</a> for registering user gaze.
         </p>
       </td>
     </tr>
 
   </tbody>
 </table>
+
 
 
 <!-- =================== Fullscreen modal HTML (click full scene 3D) ===================
