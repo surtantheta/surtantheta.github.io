@@ -541,27 +541,27 @@
 <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
-      <!-- overlay video -->
-      <div class="two" id="occlu">
-        <video width="160" height="160" muted autoplay loop>
-          <source src="images/occlurestyle3d.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+  <div class="two" id="occlu">
+    <video width="160" height="160" muted autoplay loop playsinline>
+      <source src="images/occlurestyle3d.mp4" type="video/mp4">
+    </video>
+  </div>
 
-      <!-- base image -->
-      <img src="images/occlu_before.png" width="160">
-    </div>
+  <img id="occlu_img" src="images/occlu_before.png" width="160">
+</div>
 
-    <script type="text/javascript">
-      function occlu_start() {
-        document.getElementById('occlu').style.opacity = "1";
-      }
-      function occlu_stop() {
-        document.getElementById('occlu').style.opacity = "0";
-      }
-      occlu_stop();
-    </script>
+<script type="text/javascript">
+  function occlu_start() {
+    document.getElementById('occlu').style.opacity = "1";
+    document.getElementById('occlu_img').style.opacity = "0"; // <- hide base
+  }
+  function occlu_stop() {
+    document.getElementById('occlu').style.opacity = "0";
+    document.getElementById('occlu_img').style.opacity = "1"; // <- show base
+  }
+  occlu_stop();
+</script>
+
   </td>
 
   <td style="padding:20px;width:75%;vertical-align:middle">
