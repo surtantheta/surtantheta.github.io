@@ -134,21 +134,19 @@ span.highlight {
   background-color: #ffffd0;
 }
 
-/* Container */
 .occlu-card{
   position: relative;
   overflow: hidden;
-  border-radius: 10px;   /* optional */
+  border-radius: 10px; /* optional */
 }
 
-/* Base image sets the natural height */
 .occlu-card img{
   width: 100%;
-  height: auto;          /* IMPORTANT: do not force height */
+  height: auto;       /* image defines height */
   display: block;
 }
 
-/* Overlay sits exactly on top of the image */
+/* overlay fills the exact same box as the image */
 .occlu-card .two{
   position: absolute;
   inset: 0;
@@ -157,11 +155,19 @@ span.highlight {
   z-index: 2;
 }
 
-/* Video fills the same box as the image */
-.occlu-card video{
+.occlu-card .two a{
+  position: absolute;
+  inset: 0;
+  display: block;     /* IMPORTANT */
+}
+
+.occlu-card .two video{
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;     /* change to 'contain' if you want zero cropping */
-  transform: none;       /* IMPORTANT: remove zoom */
+  object-fit: cover;  /* trims edges a bit to avoid black bars */
+  transform: none;    /* no zoom */
 }
+
