@@ -538,32 +538,37 @@
         <p></p>
       </td>
     </tr>
-    <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
-      <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
-      <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id="occlu">
-            <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener">
-              <video width="100%" height="100%" muted autoplay loop playsinline>
-                <source src="images/occlurestyle3d.mp4" type="video/mp4">
-              </video>
-            </a>
-          </div>
+<tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
+  <td style="padding:20px;width:25%;vertical-align:middle">
+    <div class="one">
+      <div class="two" id="occlu_overlay" style="z-index: 2;">
+        <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener">
+          <video width="100%" height="100%" muted autoplay loop playsinline>
+            <source src="images/occlurestyle3d.mp4" type="video/mp4">
+          </video>
+        </a>
+      </div>
 
-          <!-- IMPORTANT: make this 100% so the overlay matches the base image -->
-          <img src="images/occlu_before.png">
-        </div>
+      <img id="occlu_base" src="images/occlu_before.png" width="100%" style="z-index: 1;">
+    </div>
 
-        <script type="text/javascript">
-          function occlu_start() {
-            document.getElementById('occlu').style.opacity = "1";
-          }
-          function occlu_stop() {
-            document.getElementById('occlu').style.opacity = "0";
-          }
-          occlu_stop(); // hide overlay initially
-        </script>
-      </td>
+    <script type="text/javascript">
+      function occlu_start() {
+        // show video overlay
+        document.getElementById('occlu_overlay').style.opacity = "1";
+        // OPTIONAL but robust: hide base image so you *guarantee* it "goes away"
+        document.getElementById('occlu_base').style.opacity = "0";
+      }
+      function occlu_stop() {
+        document.getElementById('occlu_overlay').style.opacity = "0";
+        document.getElementById('occlu_base').style.opacity = "1";
+      }
+      occlu_stop(); // start hidden
+    </script>
+  </td>
+
+  <!-- keep your right-side text TD as-is -->
+
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
         <br>
