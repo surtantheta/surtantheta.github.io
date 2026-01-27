@@ -540,27 +540,28 @@
     </tr>
 <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one">
-  <div class="two" id="occlu">
-    <video width="160" height="160" muted autoplay loop playsinline>
+    <div class="one" style="position:relative; width:160px; height:160px; overflow:hidden; line-height:0;">
+  <!-- overlay -->
+  <div class="two" id="occlu" style="position:absolute; top:0; left:0; width:160px; height:160px; z-index:2; opacity:0;">
+    <video muted autoplay loop playsinline
+           width="160" height="160"
+           style="display:block; width:160px; height:160px; margin:0; padding:0;">
       <source src="images/occlurestyle3d.mp4" type="video/mp4">
     </video>
   </div>
 
-  <img id="occlu_img" src="images/occlu_before.png" width="160">
+  <!-- base -->
+  <img id="occlu_img" src="images/occlu_before.png"
+       width="160" height="160"
+       style="display:block; width:160px; height:160px; margin:0; padding:0; z-index:1;">
 </div>
 
-<script type="text/javascript">
-  function occlu_start() {
-    document.getElementById('occlu').style.opacity = "1";
-    document.getElementById('occlu_img').style.opacity = "0"; // <- hide base
-  }
-  function occlu_stop() {
-    document.getElementById('occlu').style.opacity = "0";
-    document.getElementById('occlu_img').style.opacity = "1"; // <- show base
-  }
+<script>
+  function occlu_start(){ document.getElementById('occlu').style.opacity="1"; }
+  function occlu_stop(){ document.getElementById('occlu').style.opacity="0"; }
   occlu_stop();
 </script>
+
 
   </td>
 
