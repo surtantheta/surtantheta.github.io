@@ -552,18 +552,28 @@
     <!-- OccluReStyle3D -->
     <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one"
-             style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
-          <div class="two" id="occlu_vid"
-               style="position:absolute;top:0;left:0;width:160px;height:160px;opacity:0;z-index:2;">
-            <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener"
-               style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;">
-              <video muted autoplay loop playsinline
-                     style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;object-fit:cover;">
-                <source src="images/occlurestyle3d.mp4" type="video/mp4">
-              </video>
-            </a>
-          </div>
+        <!-- wrapper stays fixed and drift-proof -->
+<div class="one"
+     style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;background:#fff;">
+
+  <!-- video overlay -->
+  <div class="two" id="occlu_vid"
+       style="position:absolute;top:0;left:0;width:160px;height:160px;opacity:0;z-index:2;">
+    <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener"
+       style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;">
+      <video muted autoplay loop playsinline
+             style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;object-fit:contain;">
+        <source src="images/occlurestyle3d.mp4" type="video/mp4">
+      </video>
+    </a>
+  </div>
+
+  <!-- base image -->
+  <img src="images/occlu_before.png"
+       style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;object-fit:contain;z-index:1;"
+       alt="">
+</div>
+
 
           <img src="images/occlu_before.png"
                style="position:absolute;top:0;left:0;width:160px;height:160px;display:block;object-fit:cover;z-index:1;"
