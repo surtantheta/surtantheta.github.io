@@ -540,45 +540,41 @@
     </tr>
 <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one occlu-card">
-  <div class="two" id="occlu_overlay">
-    <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener">
-      <video muted autoplay loop playsinline>
-        <source src="images/occlurestyle3d.mp4" type="video/mp4">
-      </video>
-    </a>
-  </div>
+    <div class="one">
+      <!-- overlay video -->
+      <div class="two" id="occlu">
+        <video width="160" height="160" muted autoplay loop>
+          <source src="images/occlurestyle3d.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-  <img id="occlu_base" src="images/occlu_before.png" alt="">
-</div>
+      <!-- base image -->
+      <img src="images/occlu_before.png" width="160">
+    </div>
 
     <script type="text/javascript">
       function occlu_start() {
-        // show video overlay
-        document.getElementById('occlu_overlay').style.opacity = "1";
-        // OPTIONAL but robust: hide base image so you *guarantee* it "goes away"
-        document.getElementById('occlu_base').style.opacity = "0";
+        document.getElementById('occlu').style.opacity = "1";
       }
       function occlu_stop() {
-        document.getElementById('occlu_overlay').style.opacity = "0";
-        document.getElementById('occlu_base').style.opacity = "1";
+        document.getElementById('occlu').style.opacity = "0";
       }
-      occlu_stop(); // start hidden
+      occlu_stop();
     </script>
   </td>
 
-  <!-- keep your right-side text TD as-is -->
-
-      <td style="padding:20px;width:75%;vertical-align:middle">
-        <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
-        <br>
-        <p>
-         We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion — motivating Temporally Consistent Occlusion-Aware Stylization. We leverage <a href="https://aidemos.meta.com/segment-anything">SAM</a> to segment humans per frame and obtain a human-specific occlusion mask followed by inpainting human masked regions using <a href="https://shangchenzhou.com/projects/ProPainter/">ProPainter</a>. Finally, we apply <a href="https://restyle3d.github.io/">ReStyle3D</a> for appearance transfer to the inpainted background video (treated as a static scene proxy) and compose original humans back onto the stylized background to obtain a final “styled scene with humans”.
-        <br>
-         <a href="https://github.com/surtantheta/OccluReStyle3D">Code</a>
-        <p></p>
-      </td>
-    </tr>
+  <td style="padding:20px;width:75%;vertical-align:middle">
+    <a href="data/occlurestyle3d.html">
+      <span class="papertitle">OcclyRestyle3D: Temporally Consistent Occlusion-Aware Stylization</span>
+    </a>
+    <br>
+    <p>
+      We are the first to extend scene-level appearance transfer ReStyle3D toward dynamic videos with human occlusion – motivating Temporally Consistent Occlusion-Aware Stylization. We leverage SAM to segment humans per frame and obtain a human-specific occlusion mask followed by inpainting human masked regions using ProPainter. Finally, we apply ReStyle3D for appearance transfer to the inpainted background video (treated as a static scene proxy) and compose original humans back onto the stylized background to obtain a final “styled scene with humans”.
+    </p>
+    <a href="#">Code</a>
+  </td>
+</tr>
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
