@@ -624,30 +624,30 @@
     </tr> -->
     <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one" style="position:relative; width:300px; height:150px; display:inline-block; overflow:hidden; border-radius:8px; line-height:0;">
+    <div class="one" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;">
       
-      <div class="two" id="cat3d_vid" style="position:absolute; inset:0; opacity:0; z-index:2; transition: opacity 0.3s ease-in-out;">
+      <div id="cat3d_vid" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:2; transition: opacity 0.3s ease;">
         <a href="images/cat3d2.mp4" target="_blank" rel="noopener" style="display:block; width:100%; height:100%;">
           <video muted autoplay loop playsinline
-                 style="width:100%; height:100%; object-fit: cover; display:block;">
+                 style="width:100%; height:100%; object-fit: cover; object-position: center; display:block;">
             <source src="images/cat3d2.mp4" type="video/mp4">
           </video>
         </a>
       </div>
 
-      <img src="images/cat3d2.png"
-           style="width:100%; height:100%; object-fit: cover; display:block; position:absolute; inset:0; z-index:1;"
+      <img src="images/cat3d2.png" 
+           style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; object-position: center; z-index:1; display:block;"
            alt="Egocentric Driver Attention">
     </div>
 
     <script type="text/javascript">
       function cat3d_start(){ 
-        const vidDiv = document.getElementById('cat3d_vid');
-        if(vidDiv) vidDiv.style.opacity = "1"; 
+        const v = document.getElementById('cat3d_vid');
+        if(v) v.style.opacity = "1"; 
       }
       function cat3d_stop(){ 
-        const vidDiv = document.getElementById('cat3d_vid');
-        if(vidDiv) vidDiv.style.opacity = "0"; 
+        const v = document.getElementById('cat3d_vid');
+        if(v) v.style.opacity = "0"; 
       }
       cat3d_stop();
     </script>
