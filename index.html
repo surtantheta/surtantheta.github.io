@@ -175,11 +175,11 @@
                 <p style="text-align:center">
                   <span id="email-wrapper">
                     <i class="fas fa-envelope"></i>
-                    <a href="javascript:void(0);" id="show-email" style="text-decoration: none;">Email</a>
+                    <button type="button" id="show-email" class="link-button">Email</button>
                   </span>
                   &nbsp;
 
-                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i>Scholar</a> &nbsp;
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&amp;hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i>Scholar</a> &nbsp;
                   <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
                 </p>
 
@@ -197,7 +197,7 @@
 
                   document.getElementById("show-email").addEventListener("click", function() {
                     document.getElementById("email-content").style.display = "block";
-                    document.getElementById("show-email").style.pointerEvents = "none";
+                    document.getElementById("show-email").disabled = true;
                     document.getElementById("show-email").style.color = "#888";
                   });
 
@@ -213,8 +213,13 @@
               <td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
                 <div id="profile3d_container"
                   style="position:relative;width:100%;max-width:100%;"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Preview 3D profile video"
                   onmouseover="profile3d_enter()"
-                  onmouseout="profile3d_leave()">
+                  onmouseout="profile3d_leave()"
+                  onfocus="profile3d_enter()"
+                  onblur="profile3d_leave()">
 
 
                   <div class="profile3d_media">
@@ -303,7 +308,7 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/humanba.png' alt="HumanBA figure">
+          <img src='images/humanba.png' alt="HumanBA figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
@@ -326,7 +331,7 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/wacv_after.jpg' alt="HIPO figure">
+          <img src='images/wacv_after.jpg' alt="HIPO figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
@@ -335,7 +340,7 @@
         </span>
         <br>
         <u>Tanuj Sur</u>,
-        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
+        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&amp;hl=en">Samrat Mukherjee</a>,
         <a href="https://openreview.net/profile?id=~Kaizer_Rahaman1">Kaizer Rahman</a>,
         <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a>,
         <a href="https://m-haris-khan.com/">Dr. Muhammad Haris Khan</a>,
@@ -356,15 +361,15 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/icassp_after.jpg' alt="UIDAPLE figure">
+          <img src='images/icassp_after.jpg' alt="UIDAPLE figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">UIDAPLE: Unsupervised Incremental Domain Adaptation through Adaptive Prompt Learning</span>
         <br>
-        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&hl=en">Samrat Mukherjee</a>,
+        <a href="https://scholar.google.com/citations?user=zHF9tloAAAAJ&amp;hl=en">Samrat Mukherjee</a>,
         <u>Tanuj Sur</u>,
-        <a href="https://www.linkedin.com/in/saurish-seksaria-342191229/?trk=people_directory&originalSubdomain=in">Saurish Seksaria</a>,
+        <a href="https://www.linkedin.com/in/saurish-seksaria-342191229/?trk=people_directory&amp;originalSubdomain=in">Saurish Seksaria</a>,
         <a href="https://www.cvai.cs.uni-frankfurt.de/team.html">Prof. Dr. Gemma Roig</a>,
         <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a>,
         <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>
@@ -385,13 +390,13 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/tmi_after.png' alt="R-PNODE figure">
+          <img src='images/tmi_after.png' alt="R-PNODE figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">Robust Prototypical Few-Shot Organ Segmentation with Regularized Neural-ODEs</span>
         <br>
-        <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=BPbALXsAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Prashant Pandey*</a>,
         <a href="https://mustafa1728.github.io/">Mustafa Chasmai*</a>,
         <u>Tanuj Sur</u>,
         <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a>
@@ -410,14 +415,14 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/miccai_after.jpg' alt="MICCAI paper figure">
+          <img src='images/miccai_after.jpg' alt="MICCAI paper figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">Adversarially Robust Prototypical Few-shot Segmentation with Neural-ODEs</span>
         <br>
-        <a href="https://scholar.google.com/citations?hl=en&user=BPbALXsAAAAJ&view_op=list_works&sortby=pubdate">Prashant Pandey*</a>,
-        <a href="https://scholar.google.com/citations?hl=en&user=6Rt6nv4AAAAJ&view_op=list_works&sortby=pubdate">Aleti Vardhan*</a>,
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=BPbALXsAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Prashant Pandey*</a>,
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=6Rt6nv4AAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Aleti Vardhan*</a>,
         <a href="https://mustafa1728.github.io/">Mustafa Chasmai</a>,
         <u>Tanuj Sur</u>,
         <a href="https://web.iitd.ac.in/~brejesh/aboutme.html">Dr. Brejesh Lall</a>
@@ -437,14 +442,14 @@
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="paper-thumb">
-          <img src='images/cods_after.jpg' alt="CODS paper figure">
+          <img src='images/cods_after.jpg' alt="CODS paper figure" loading="lazy" decoding="async">
         </div>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <span class="papertitle">Mathematical Expressions in Software Engineering Artifacts</span>
         <br>
         <u>Tanuj Sur</u>,
-        <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao</a>
+        <a href="https://scholar.google.com/citations?user=gj08SOAAAAAJ&amp;hl=en">Aaditree Jaisswal</a>, <a href="https://vvtesh.co.in/">Dr. Venkatesh Vinayakarao</a>
         <br>
         <em>CODS-COMAD: International Conference on Data Science and Management of Data</em>, 2023
         <br>
@@ -458,6 +463,7 @@
         </p>
       </td>
     </tr>
+  </tbody></table>
 
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
   <tbody>
@@ -476,23 +482,41 @@
     <!-- EgoHuman3R -->
     <tr class="project-row" onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Preview EgoHuman3R video" onfocus="egohuman_start()" onblur="egohuman_stop()">
           <div class="two" id="egohuman_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
             <a href="images/egohuman3r.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
-              <video muted autoplay loop playsinline
+              <video muted loop playsinline preload="none"
                      style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;">
                 <source src="images/egohuman3r.mp4" type="video/mp4">
               </video>
             </a>
           </div>
-          <img src="images/tram1_before.png"
+          <img src="images/tram1_before.png" loading="lazy" decoding="async"
                style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;z-index:1;"
                alt="">
         </div>
 
         <script type="text/javascript">
-          function egohuman_start(){ document.getElementById('egohuman_vid').style.opacity = "1"; }
-          function egohuman_stop(){  document.getElementById('egohuman_vid').style.opacity = "0"; }
+          function egohuman_start() {
+            const c = document.getElementById('egohuman_vid');
+            if (!c) return;
+            c.style.opacity = "1";
+            const v = c.querySelector('video');
+            if (v) {
+              const p = v.play();
+              if (p && typeof p.catch === "function") p.catch(() => {});
+            }
+          }
+          function egohuman_stop() {
+            const c = document.getElementById('egohuman_vid');
+            if (!c) return;
+            c.style.opacity = "0";
+            const v = c.querySelector('video');
+            if (v) {
+              v.pause();
+              try { v.currentTime = 0; } catch (e) {}
+            }
+          }
           egohuman_stop();
         </script>
       </td>
@@ -512,23 +536,41 @@
     <!-- OccluReStyle3D -->
     <tr class="project-row" onmouseout="occlu_stop()" onmouseover="occlu_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Preview OcclyRestyle3D video" onfocus="occlu_start()" onblur="occlu_stop()">
           <div class="two" id="occlu_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
             <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
-              <video muted autoplay loop playsinline
+              <video muted loop playsinline preload="none"
                      style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;">
                 <source src="images/occlurestyle3d_crop.mp4" type="video/mp4">
               </video>
             </a>
           </div>
-          <img src="images/occlu_before_crop.png"
+          <img src="images/occlu_before_crop.png" loading="lazy" decoding="async"
                style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;z-index:1;"
                alt="">
         </div>
 
         <script type="text/javascript">
-          function occlu_start(){ document.getElementById('occlu_vid').style.opacity = "1"; }
-          function occlu_stop(){  document.getElementById('occlu_vid').style.opacity = "0"; }
+          function occlu_start() {
+            const c = document.getElementById('occlu_vid');
+            if (!c) return;
+            c.style.opacity = "1";
+            const v = c.querySelector('video');
+            if (v) {
+              const p = v.play();
+              if (p && typeof p.catch === "function") p.catch(() => {});
+            }
+          }
+          function occlu_stop() {
+            const c = document.getElementById('occlu_vid');
+            if (!c) return;
+            c.style.opacity = "0";
+            const v = c.querySelector('video');
+            if (v) {
+              v.pause();
+              try { v.currentTime = 0; } catch (e) {}
+            }
+          }
           occlu_stop();
         </script>
       </td>
@@ -588,18 +630,18 @@
     </tr> -->
     <tr class="project-row" onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one project-thumb project-thumb-wide" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;">
+    <div class="one project-thumb project-thumb-wide" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;" tabindex="0" role="button" aria-label="Preview Egocentric Driver Attention video" onfocus="cat3d_start()" onblur="cat3d_stop()">
       
       <div id="cat3d_vid" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:2; transition: opacity 0.3s ease;">
         <a href="images/cat3d2.mp4" target="_blank" rel="noopener" style="display:block; width:100%; height:100%;">
-          <video muted autoplay loop playsinline
+          <video muted loop playsinline preload="none"
                  style="width:100%; height:100%; object-fit: cover; object-position: center; display:block;">
             <source src="images/cat3d2.mp4" type="video/mp4">
           </video>
         </a>
       </div>
 
-      <img src="images/cat3d2.png" 
+      <img src="images/cat3d2.png" loading="lazy" decoding="async"
            style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; object-position: center; z-index:1; display:block;"
            alt="Egocentric Driver Attention">
     </div>
@@ -607,11 +649,25 @@
     <script type="text/javascript">
       function cat3d_start(){ 
         const v = document.getElementById('cat3d_vid');
-        if(v) v.style.opacity = "1"; 
+        if (v) {
+          v.style.opacity = "1";
+          const vid = v.querySelector('video');
+          if (vid) {
+            const p = vid.play();
+            if (p && typeof p.catch === "function") p.catch(() => {});
+          }
+        }
       }
       function cat3d_stop(){ 
         const v = document.getElementById('cat3d_vid');
-        if(v) v.style.opacity = "0"; 
+        if (v) {
+          v.style.opacity = "0";
+          const vid = v.querySelector('video');
+          if (vid) {
+            vid.pause();
+            try { vid.currentTime = 0; } catch (e) {}
+          }
+        }
       }
       cat3d_stop();
     </script>
@@ -631,10 +687,14 @@
       We use <a href="https://www.projectaria.com/">Meta's Eye Tracking ARIA glasses</a> for registering user gaze.
     </p>
   </td>
-</tr>
+	</tr>
 
-  </tbody>
+	  </tbody>
 </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
 <!-- =================== Fullscreen modal HTML (click full scene 3D) ===================
@@ -681,6 +741,6 @@
 </script> -->
 <!-- ================================================================================ -->
 
-<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=300&t=tt&d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
+<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&amp;w=300&amp;t=tt&amp;d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&amp;co=ffffff&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=808080"></script>
 </body>
 </html>
