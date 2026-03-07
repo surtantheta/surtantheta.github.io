@@ -300,6 +300,41 @@
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+    <tr onmouseout="humanba_stop()" onmouseover="humanba_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='humanba_image'>
+            <img src='images/humanba.png' width=100%>
+          </div>
+          <img src='images/humanba.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function humanba_start() {
+            document.getElementById('humanba_image').style.opacity = "1";
+          }
+          function humanba_stop() {
+            document.getElementById('humanba_image').style.opacity = "0";
+          }
+          humanba_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <span class="papertitle">
+          HumanBA: Human-Aware Bundle Adjustment via Global Human-Camera Decoupling
+        </span>
+        <br>
+        Fengyuan Yang, <u>Tanuj Sur</u>, Dr. Elden Tse, Dr. Angela Yao
+        <br>
+        <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em>, 2026
+        <p></p>
+        <p>
+          HumanBA improves global human and camera motion recovery in monocular human-centric videos by turning dynamic humans into useful bundle-adjustment constraints.
+          It decouples human-induced motion from joint trajectories to build pseudo-static human landmarks, then applies motion refinement and acceleration-aware reliability weighting to suppress unstable joints.
+          On EMDB2 and SLOPER4D, HumanBA reduces camera trajectory drift/jumps and improves world-coordinate human reconstruction (e.g., EMDB2 WA-MPJPE 79.8 -> 70.1 and SLOPER4D ATE-S 4.05 -> 3.10 versus prior masked-SLAM baselines).
+        </p>
+      </td>
+    </tr>
+
     <tr onmouseout="wacv_stop()" onmouseover="wacv_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
