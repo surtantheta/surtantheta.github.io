@@ -156,11 +156,11 @@
   </head>
 
   <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <table class="main-layout" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
+            <tr class="hero-row" style="padding:0px">
               <td style="padding:2.5%;width:63%;vertical-align:middle">
                 <p class="name" style="text-align: center;">
                   Tanuj Sur
@@ -288,7 +288,7 @@
           </div>
           <!-- ============================================================================================ -->
 
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <table class="papers-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
               <tr>
               <td style="padding:20px;width:100%;vertical-align:middle">
                 <h2>Research</h2>
@@ -298,7 +298,7 @@
               </td>
             </tr>
           </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <table class="papers-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
     <tr class="paper-row">
       <td style="padding:20px;width:25%;vertical-align:middle">
@@ -470,13 +470,13 @@
   </tbody>
 </table>
 
-<table width="100%" align="center" border="0" cellpadding="20">
+<table class="projects-table" width="100%" align="center" border="0" cellpadding="20">
   <tbody>
 
     <!-- EgoHuman3R -->
-    <tr onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
+    <tr class="project-row" onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
           <div class="two" id="egohuman_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
             <a href="images/egohuman3r.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
               <video muted autoplay loop playsinline
@@ -510,9 +510,9 @@
     </tr>
 
     <!-- OccluReStyle3D -->
-    <tr onmouseout="occlu_stop()" onmouseover="occlu_start()">
+    <tr class="project-row" onmouseout="occlu_stop()" onmouseover="occlu_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
           <div class="two" id="occlu_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
             <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
               <video muted autoplay loop playsinline
@@ -586,9 +586,9 @@
         </p>
       </td>
     </tr> -->
-    <tr onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
+    <tr class="project-row" onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;">
+    <div class="one project-thumb project-thumb-wide" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;">
       
       <div id="cat3d_vid" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:2; transition: opacity 0.3s ease;">
         <a href="images/cat3d2.mp4" target="_blank" rel="noopener" style="display:block; width:100%; height:100%;">

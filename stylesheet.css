@@ -154,3 +154,78 @@ h2 {
 span.highlight {
   background-color: #ffffd0;
 }
+
+@media (max-width: 820px) {
+  .main-layout > tbody > tr > td {
+    padding: 0 !important;
+  }
+
+  .hero-row > td {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 14px 16px !important;
+  }
+
+  .hero-row > td:last-child {
+    padding-top: 4px !important;
+    text-align: center;
+  }
+
+  .papers-table,
+  .papers-table tbody,
+  .papers-table tr,
+  .papers-table td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .paper-row > td {
+    padding: 12px 16px !important;
+  }
+
+  .paper-row > td:first-child {
+    padding-bottom: 0 !important;
+  }
+
+  .paper-row .paper-thumb {
+    width: min(78vw, 260px);
+    height: min(78vw, 260px);
+    margin: 0 auto;
+  }
+
+  .projects-table,
+  .projects-table tbody,
+  .projects-table tr,
+  .projects-table td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .project-row > td {
+    padding: 12px 16px !important;
+  }
+
+  .project-row > td:first-child {
+    padding-bottom: 0 !important;
+    text-align: center !important;
+  }
+
+  .project-row .project-thumb {
+    width: min(78vw, 260px) !important;
+    height: min(78vw, 260px) !important;
+  }
+
+  .project-row .project-thumb-wide {
+    width: min(90vw, 360px) !important;
+    height: min(34vw, 140px) !important;
+  }
+
+  .project-row .two {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
