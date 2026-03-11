@@ -4,12 +4,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Tanuj Sur</title>
+    <meta name="description" content="Tanuj Sur - PhD student at NUS working on computer vision, 3D scene reconstruction, and human-centric visual understanding.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f9f9f9">
+    <link rel="canonical" href="https://surtantheta.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tanuj Sur">
+    <meta property="og:title" content="Tanuj Sur | Computer Vision Research">
+    <meta property="og:description" content="PhD student at NUS working on computer vision, 3D scene reconstruction, and human-centric visual understanding.">
+    <meta property="og:url" content="https://surtantheta.github.io/">
+    <meta property="og:image" content="https://surtantheta.github.io/images/IMG_4187.jpg">
+    <meta property="og:image:alt" content="Portrait photo of Tanuj Sur">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tanuj Sur | Computer Vision Research">
+    <meta name="twitter:description" content="PhD student at NUS working on computer vision, 3D scene reconstruction, and human-centric visual understanding.">
+    <meta name="twitter:image" content="https://surtantheta.github.io/images/IMG_4187.jpg">
+    <meta name="twitter:image:alt" content="Portrait photo of Tanuj Sur">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <meta name="author" content="Tanuj Sur">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tanuj Sur",
+        "url": "https://surtantheta.github.io/",
+        "image": "https://surtantheta.github.io/images/IMG_4187.jpg",
+        "jobTitle": "PhD Student",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "National University of Singapore"
+        },
+        "sameAs": [
+          "https://scholar.google.com/citations?user=S93m1WoAAAAJ&hl=en",
+          "https://www.linkedin.com/in/tanuj-sur",
+          "https://github.com/surtantheta/"
+        ]
+      }
+    </script>
 
     <!-- =================== Added: Profile hover + click-to-fullscreen 3D =================== -->
     <style>
@@ -156,6 +193,8 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <main id="main-content">
     <table class="main-layout" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
@@ -175,19 +214,19 @@
                 <p style="text-align:center">
                   <span id="email-wrapper">
                     <button type="button" id="show-email" class="link-button" aria-controls="email-content" aria-expanded="false">
-                      <i class="fas fa-envelope" style="margin-right: 5px;"></i>Email
+                      <i class="fas fa-envelope" aria-hidden="true" style="margin-right: 5px;"></i>Email
                     </button>
                   </span>
                   &nbsp;
 
-                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&amp;hl=en"><i class="fas fa-graduation-cap" style="margin-right: 5px;"></i>Scholar</a> &nbsp;
-                  <a href="https://www.linkedin.com/in/tanuj-sur"><i class="fab fa-linkedin" style="margin-right: 5px;"></i>LinkedIn</a> &nbsp;
-                  <a href="https://github.com/surtantheta/"><i class="fab fa-github" style="margin-right: 5px;"></i>Github</a>
+                  <a href="https://scholar.google.com/citations?user=S93m1WoAAAAJ&amp;hl=en"><i class="fas fa-graduation-cap" aria-hidden="true" style="margin-right: 5px;"></i>Scholar</a> &nbsp;
+                  <a href="https://www.linkedin.com/in/tanuj-sur"><i class="fab fa-linkedin" aria-hidden="true" style="margin-right: 5px;"></i>LinkedIn</a> &nbsp;
+                  <a href="https://github.com/surtantheta/"><i class="fab fa-github" aria-hidden="true" style="margin-right: 5px;"></i>Github</a>
                 </p>
 
                 <!-- Hidden Email Section -->
                 <div id="email-content" class="email-panel" hidden>
-                  <span id="scrambled-email">su•••@g•••.com</span>
+                  <span id="scrambled-email">Hidden for spam protection</span>
                   <button type="button" id="reveal-email" class="email-action-btn">
                     Reveal Email
                   </button>
@@ -207,6 +246,8 @@
                     const copyEmailBtn = document.getElementById("copy-email");
                     const emailSlot = document.getElementById("scrambled-email");
                     const emailStatus = document.getElementById("email-status");
+                    const emailBtnOpen = '<i class="fas fa-envelope" aria-hidden="true" style="margin-right: 5px;"></i>Email';
+                    const emailBtnClose = '<i class="fas fa-envelope-open-text" aria-hidden="true" style="margin-right: 5px;"></i>Hide Email';
                     let isRevealed = false;
                     let clearStatusTimer = null;
 
@@ -217,11 +258,11 @@
                     }
 
                     showEmailBtn.addEventListener("click", () => {
-                      const nextHidden = !emailContent.hidden;
-                      emailContent.hidden = nextHidden;
-                      showEmailBtn.setAttribute("aria-expanded", String(!nextHidden));
-                      showEmailBtn.textContent = nextHidden ? "Email" : "Hide Email";
-                      if (!nextHidden && !isRevealed) revealEmailBtn.focus();
+                      const isOpening = emailContent.hidden;
+                      emailContent.hidden = !isOpening;
+                      showEmailBtn.setAttribute("aria-expanded", String(isOpening));
+                      showEmailBtn.innerHTML = isOpening ? emailBtnClose : emailBtnOpen;
+                      if (isOpening && !isRevealed) revealEmailBtn.focus();
                     });
 
                     revealEmailBtn.addEventListener("click", () => {
@@ -257,34 +298,41 @@
                     });
                   })();
                 </script>
+                <script type="text/javascript">
+                  function prefersReducedMotion() {
+                    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                  }
+                </script>
               </td>
 
               <!-- =================== UPDATED: Profile image replaced w/ hover video + click fullscreen =================== -->
               <td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
                 <div id="profile3d_container"
                   style="position:relative;width:100%;max-width:100%;"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Preview 3D profile video"
+                  role="img"
+                  aria-label="Animated profile preview of Tanuj Sur"
                   onmouseover="profile3d_enter()"
-                  onmouseout="profile3d_leave()"
-                  onfocus="profile3d_enter()"
-                  onblur="profile3d_leave()">
+                  onmouseout="profile3d_leave()">
 
 
                   <div class="profile3d_media">
                     <img
                       class="profile3d_img hoverZoomLink"
-                      alt="profile photo"
-                      src="images/IMG_4187.jpg">
+                      alt="Portrait photo of Tanuj Sur"
+                      src="images/IMG_4187.jpg"
+                      width="960"
+                      height="1280"
+                      loading="eager"
+                      decoding="async"
+                      fetchpriority="high">
 
-                    <video class="profile3d_vid" muted playsinline preload="metadata">
+                    <video class="profile3d_vid" muted playsinline preload="none" aria-hidden="true">
                       <source src="images/profile_3d_recon.mp4" type="video/mp4">
                     </video>
                   </div>
 
                   <div id="profile3d_badge">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
                     <span>Research</span>
                   </div>
                 </div>
@@ -297,6 +345,7 @@
                   }
 
                   function profile3d_enter() {
+                    if (prefersReducedMotion()) return;
                     const c = document.getElementById('profile3d_container');
                     if (!c) return;
                     c.classList.add('is-hovered');
@@ -530,15 +579,25 @@
   </tbody>
 </table>
 
+<script type="text/javascript">
+  function activatePreview(event, container) {
+    if (!event || !container) return;
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    const targetLink = container.querySelector('a[href]');
+    if (targetLink) targetLink.click();
+  }
+</script>
+
 <table class="projects-table" width="100%" align="center" border="0" cellpadding="20">
   <tbody>
 
     <!-- EgoHuman3R -->
     <tr class="project-row" onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Preview EgoHuman3R video" onfocus="egohuman_start()" onblur="egohuman_stop()">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Open EgoHuman3R demo video" onfocus="egohuman_start()" onblur="egohuman_stop()" onkeydown="activatePreview(event, this)">
           <div class="two" id="egohuman_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
-            <a href="images/egohuman3r.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
+            <a href="images/egohuman3r.mp4" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;display:block;">
               <video muted loop playsinline preload="none"
                      style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;">
                 <source src="images/egohuman3r.mp4" type="video/mp4">
@@ -547,11 +606,12 @@
           </div>
           <img src="images/tram1_before.png" loading="lazy" decoding="async"
                style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;z-index:1;"
-               alt="">
+               alt="EgoHuman3R project preview image">
         </div>
 
         <script type="text/javascript">
           function egohuman_start() {
+            if (prefersReducedMotion()) return;
             const c = document.getElementById('egohuman_vid');
             if (!c) return;
             c.style.opacity = "1";
@@ -590,9 +650,9 @@
     <!-- OccluReStyle3D -->
     <tr class="project-row" onmouseout="occlu_stop()" onmouseover="occlu_start()">
       <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Preview OcclyRestyle3D video" onfocus="occlu_start()" onblur="occlu_stop()">
+        <div class="one project-thumb" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;" tabindex="0" role="button" aria-label="Open OcclyRestyle3D demo video" onfocus="occlu_start()" onblur="occlu_stop()" onkeydown="activatePreview(event, this)">
           <div class="two" id="occlu_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
-            <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
+            <a href="images/occlurestyle3d.mp4" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;display:block;">
               <video muted loop playsinline preload="none"
                      style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;">
                 <source src="images/occlurestyle3d_crop.mp4" type="video/mp4">
@@ -601,11 +661,12 @@
           </div>
           <img src="images/occlu_before_crop.png" loading="lazy" decoding="async"
                style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;z-index:1;"
-               alt="">
+               alt="OcclyRestyle3D project preview image">
         </div>
 
         <script type="text/javascript">
           function occlu_start() {
+            if (prefersReducedMotion()) return;
             const c = document.getElementById('occlu_vid');
             if (!c) return;
             c.style.opacity = "1";
@@ -648,7 +709,7 @@
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one" style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;">
           <div class="two" id="cat3d_vid" style="position:absolute;inset:0;opacity:0;z-index:2;">
-            <a href="images/cat3d2.mp4" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;">
+            <a href="images/cat3d2.mp4" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;display:block;">
               <video muted autoplay loop playsinline
                      style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;">
                 <source src="images/cat3d2.mp4" type="video/mp4">
@@ -684,10 +745,10 @@
     </tr> -->
     <tr class="project-row" onmouseout="cat3d_stop()" onmouseover="cat3d_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one project-thumb project-thumb-wide" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;" tabindex="0" role="button" aria-label="Preview Egocentric Driver Attention video" onfocus="cat3d_start()" onblur="cat3d_stop()">
+    <div class="one project-thumb project-thumb-wide" style="position:relative; width:320px; height:120px; overflow:hidden; border-radius:8px; background:#000;" tabindex="0" role="button" aria-label="Open Egocentric Driver Attention demo video" onfocus="cat3d_start()" onblur="cat3d_stop()" onkeydown="activatePreview(event, this)">
       
       <div id="cat3d_vid" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:2; transition: opacity 0.3s ease;">
-        <a href="images/cat3d2.mp4" target="_blank" rel="noopener" style="display:block; width:100%; height:100%;">
+        <a href="images/cat3d2.mp4" target="_blank" rel="noopener noreferrer" style="display:block; width:100%; height:100%;">
           <video muted loop playsinline preload="none"
                  style="width:100%; height:100%; object-fit: cover; object-position: center; display:block;">
             <source src="images/cat3d2.mp4" type="video/mp4">
@@ -702,6 +763,7 @@
 
     <script type="text/javascript">
       function cat3d_start(){ 
+        if (prefersReducedMotion()) return;
         const v = document.getElementById('cat3d_vid');
         if (v) {
           v.style.opacity = "1";
@@ -822,6 +884,7 @@
       </tr>
     </tbody>
   </table>
+  </main>
 
 
 <!-- =================== Fullscreen modal HTML (click full scene 3D) ===================
@@ -868,7 +931,7 @@
 </script> -->
 <!-- ================================================================================ -->
 
-<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&amp;w=300&amp;t=tt&amp;d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&amp;co=ffffff&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=808080"></script>
+<script type="text/javascript" id="clustrmaps" src="https://cdn.clustrmaps.com/map_v2.js?cl=080808&amp;w=300&amp;t=tt&amp;d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&amp;co=ffffff&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=808080" defer></script>
 <script type="text/javascript">
   (() => {
     const cue = document.getElementById('scroll-cue');
@@ -893,6 +956,7 @@
 </script>
 <script type="text/javascript">
   (() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const motionTargets = [
       document.querySelector('.news-widget'),
       document.querySelector('#profile3d_container'),
@@ -902,6 +966,11 @@
     ].filter(Boolean);
 
     if (!motionTargets.length) return;
+
+    if (prefersReducedMotion) {
+      motionTargets.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
 
     let delay = 0;
     motionTargets.forEach((el) => {
