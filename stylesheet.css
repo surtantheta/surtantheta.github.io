@@ -90,6 +90,51 @@ a:hover {
   color: #f09228;
 }
 
+.email-panel {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.email-action-btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font: inherit;
+  color: #fff;
+  background-color: #0077cc;
+}
+
+.email-action-btn:hover,
+.email-action-btn:focus {
+  background-color: #0b69ad;
+}
+
+.email-action-btn:disabled {
+  cursor: not-allowed;
+  background-color: #b8b8b8;
+}
+
+.email-action-btn.secondary {
+  background-color: #444;
+}
+
+.email-action-btn.secondary:hover,
+.email-action-btn.secondary:focus {
+  background-color: #2f2f2f;
+}
+
+.email-status {
+  min-width: 68px;
+  font-size: 12px;
+  color: #1b7d35;
+}
+
 body,
 td,
 th,

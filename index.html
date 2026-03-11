@@ -175,7 +175,7 @@
                 <p style="text-align:center">
                   <span id="email-wrapper">
                     <i class="fas fa-envelope"></i>
-                    <button type="button" id="show-email" class="link-button">Email</button>
+                    <button type="button" id="show-email" class="link-button" aria-controls="email-content" aria-expanded="false">Email</button>
                   </span>
                   &nbsp;
 
@@ -184,28 +184,76 @@
                 </p>
 
                 <!-- Hidden Email Section -->
-                <div id="email-content" style="text-align:center; margin-top:10px; display:none;">
+                <div id="email-content" class="email-panel" hidden>
                   <span id="scrambled-email">su•••@g•••.com</span>
-                  <button id="reveal-email" style="margin-left: 10px; cursor: pointer; background-color: #0077cc; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                  <button type="button" id="reveal-email" class="email-action-btn">
                     Reveal Email
                   </button>
+                  <button type="button" id="copy-email" class="email-action-btn secondary" disabled>
+                    Copy
+                  </button>
+                  <span id="email-status" class="email-status" aria-live="polite"></span>
                 </div>
 
                 <script>
-                  const scrambled = "c3VydGFudGhldGFAZ21haWwuY29t"; // base64 of surtantheta@gmail.com
-                  const emailReal = atob(scrambled);
+                  (() => {
+                    const scrambled = "c3VydGFudGhldGFAZ21haWwuY29t"; // base64 of surtantheta@gmail.com
+                    const emailReal = atob(scrambled);
+                    const emailContent = document.getElementById("email-content");
+                    const showEmailBtn = document.getElementById("show-email");
+                    const revealEmailBtn = document.getElementById("reveal-email");
+                    const copyEmailBtn = document.getElementById("copy-email");
+                    const emailSlot = document.getElementById("scrambled-email");
+                    const emailStatus = document.getElementById("email-status");
+                    let isRevealed = false;
+                    let clearStatusTimer = null;
 
-                  document.getElementById("show-email").addEventListener("click", function() {
-                    document.getElementById("email-content").style.display = "block";
-                    document.getElementById("show-email").disabled = true;
-                    document.getElementById("show-email").style.color = "#888";
-                  });
+                    function setStatus(msg) {
+                      emailStatus.textContent = msg;
+                      if (clearStatusTimer) clearTimeout(clearStatusTimer);
+                      clearStatusTimer = setTimeout(() => { emailStatus.textContent = ""; }, 2000);
+                    }
 
-                  document.getElementById("reveal-email").addEventListener("click", function () {
-                    document.getElementById("scrambled-email").innerHTML = `<a href="mailto:${emailReal}">${emailReal}</a>`;
-                    this.disabled = true;
-                    this.style.backgroundColor = "#ccc";
-                  });
+                    showEmailBtn.addEventListener("click", () => {
+                      const nextHidden = !emailContent.hidden;
+                      emailContent.hidden = nextHidden;
+                      showEmailBtn.setAttribute("aria-expanded", String(!nextHidden));
+                      showEmailBtn.textContent = nextHidden ? "Email" : "Hide Email";
+                      if (!nextHidden && !isRevealed) revealEmailBtn.focus();
+                    });
+
+                    revealEmailBtn.addEventListener("click", () => {
+                      if (isRevealed) return;
+                      const link = document.createElement("a");
+                      link.href = `mailto:${emailReal}`;
+                      link.textContent = emailReal;
+                      emailSlot.textContent = "";
+                      emailSlot.appendChild(link);
+                      isRevealed = true;
+                      revealEmailBtn.disabled = true;
+                      copyEmailBtn.disabled = false;
+                      setStatus("Revealed");
+                    });
+
+                    copyEmailBtn.addEventListener("click", async () => {
+                      if (!isRevealed) return;
+                      try {
+                        await navigator.clipboard.writeText(emailReal);
+                        setStatus("Copied");
+                      } catch (e) {
+                        const ta = document.createElement("textarea");
+                        ta.value = emailReal;
+                        ta.setAttribute("readonly", "");
+                        ta.style.position = "absolute";
+                        ta.style.left = "-9999px";
+                        document.body.appendChild(ta);
+                        ta.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(ta);
+                        setStatus("Copied");
+                      }
+                    });
+                  })();
                 </script>
               </td>
 
@@ -465,78 +513,6 @@
     </tr>
   </tbody></table>
 
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-      <tr>
-        <td>
-          <h2>Research Internships</h2>
-        </td>
-      </tr>
-    </tbody></table>
-    <table class="experience-table" width="100%" align="center" border="0" cellpadding="20"><tbody>
-      <tr class="experience-row">
-        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-          <img src="images/iiit-logo2.jpg" alt="IIIT Hyderabad logo" class="experience-logo" loading="lazy" decoding="async">
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://mobility.iiit.ac.in/drivesim/index.html">Centre for Visual Information Technology (CVIT)</a>,
-          International Institute of Information Technology Hyderabad under
-          <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
-        </td>
-      </tr>
-      <tr class="experience-row">
-        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-          <img src="images/iitb-logo1_new.png" alt="IIT Bombay logo" class="experience-logo" loading="lazy" decoding="async">
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://www.minds.iitb.ac.in/">Center of Machine Intelligence &amp; Data Science (CMInDS)</a>, Indian Institute of Technology Bombay under
-          <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
-          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.
-        </td>
-      </tr>
-      <tr class="experience-row">
-        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-          <img src="images/tcs-logo1.jpg" alt="TCS logo" class="experience-logo" loading="lazy" decoding="async">
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://www.tcs.com/what-we-do/research">TCS Research and Innovation Labs</a>
-        </td>
-      </tr>
-    </tbody></table>
-
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-      <tr>
-        <td>
-          <h2>Services</h2>
-        </td>
-      </tr>
-    </tbody></table>
-    <table class="experience-table" width="100%" align="center" border="0" cellpadding="20"><tbody>
-      <tr class="experience-row">
-        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-          <img src="images/nus_logo.png" alt="NUS logo" class="experience-logo" loading="lazy" decoding="async">
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          1. Teaching Assistant for CS4243 Computer Vision and Pattern Recognition under Prof.
-          <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>.
-          <br><br>
-          2. Teaching Assistant for CS5224 Cloud Computing under Prof.
-          <a href="https://www.comp.nus.edu.sg/~axgopala/">Anandha Gopalan</a>.
-        </td>
-      </tr>
-      <tr class="experience-row">
-        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
-          <img src="images/cmi-logo1_new.png" alt="CMI logo" class="experience-logo" loading="lazy" decoding="async">
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          1. <a href="https://lightning-postage-c9f.notion.site/Elevating-Student-Internship-Experiences-Alumni-Mentored-Internship-at-CMI-ad8e99c56f044db9b5445602f3ead74f">Industry Project instructor</a>
-          on "Web User Interface (UI) detection from website images".
-          <br><br>
-          2. Teaching Assistant for Data Mining &amp; Machine Learning under Prof.
-          <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>.
-        </td>
-      </tr>
-    </tbody></table>
-
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
   <tbody>
     <tr>
@@ -763,6 +739,79 @@
 
 	  </tbody>
 </table>
+
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+      <tr>
+        <td>
+          <h2>Research Internships</h2>
+        </td>
+      </tr>
+    </tbody></table>
+    <table class="experience-table" width="100%" align="center" border="0" cellpadding="20"><tbody>
+      <tr class="experience-row">
+        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+          <img src="images/iiit-logo2.jpg" alt="IIIT Hyderabad logo" class="experience-logo" loading="lazy" decoding="async">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://mobility.iiit.ac.in/drivesim/index.html">Centre for Visual Information Technology (CVIT)</a>,
+          International Institute of Information Technology Hyderabad under
+          <a href="https://faculty.iiit.ac.in/~jawahar/">Dr. C.V. Jawahar</a>.
+        </td>
+      </tr>
+      <tr class="experience-row">
+        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+          <img src="images/iitb-logo1_new.png" alt="IIT Bombay logo" class="experience-logo" loading="lazy" decoding="async">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://www.minds.iitb.ac.in/">Center of Machine Intelligence &amp; Data Science (CMInDS)</a>, Indian Institute of Technology Bombay under
+          <a href="https://www.ee.iitb.ac.in/~sc/">Dr. Subhasis Chaudhury</a> and
+          <a href="https://biplab-banerjee.github.io/">Dr. Biplab Banerjee</a>.
+        </td>
+      </tr>
+      <tr class="experience-row">
+        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+          <img src="images/tcs-logo1.jpg" alt="TCS logo" class="experience-logo" loading="lazy" decoding="async">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://www.tcs.com/what-we-do/research">TCS Research and Innovation Labs</a>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
+      <tr>
+        <td>
+          <h2>Services</h2>
+        </td>
+      </tr>
+    </tbody></table>
+    <table class="experience-table" width="100%" align="center" border="0" cellpadding="20"><tbody>
+      <tr class="experience-row">
+        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+          <img src="images/nus_logo.png" alt="NUS logo" class="experience-logo" loading="lazy" decoding="async">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          1. Teaching Assistant for CS4243 Computer Vision and Pattern Recognition under Prof.
+          <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>.
+          <br><br>
+          2. Teaching Assistant for CS5224 Cloud Computing under Prof.
+          <a href="https://www.comp.nus.edu.sg/~axgopala/">Anandha Gopalan</a>.
+        </td>
+      </tr>
+      <tr class="experience-row">
+        <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+          <img src="images/cmi-logo1_new.png" alt="CMI logo" class="experience-logo" loading="lazy" decoding="async">
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          1. <a href="https://lightning-postage-c9f.notion.site/Elevating-Student-Internship-Experiences-Alumni-Mentored-Internship-at-CMI-ad8e99c56f044db9b5445602f3ead74f">Industry Project instructor</a>
+          on "Web User Interface (UI) detection from website images".
+          <br><br>
+          2. Teaching Assistant for Data Mining &amp; Machine Learning under Prof.
+          <a href="https://www.cmi.ac.in/~madhavan/">Madhavan Mukund</a>.
+        </td>
+      </tr>
+    </tbody></table>
+
         </td>
       </tr>
     </tbody>
