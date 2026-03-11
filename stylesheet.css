@@ -139,6 +139,32 @@ a:hover {
   color: #1b7d35;
 }
 
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms ease, transform 520ms ease;
+  will-change: opacity, transform;
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.paper-row .paper-thumb,
+.project-row .project-thumb,
+.experience-row .experience-logo,
+.news-widget {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.paper-row .paper-thumb:hover,
+.project-row .project-thumb:hover,
+.experience-row .experience-logo:hover,
+.news-widget:hover {
+  transform: translateY(-3px);
+}
+
 body,
 td,
 th,
@@ -321,5 +347,10 @@ span.highlight {
 
   .experience-row .experience-logo {
     width: min(42vw, 140px);
+  }
+
+  .motion-reveal {
+    transition-duration: 420ms;
+    transform: translateY(10px);
   }
 }
