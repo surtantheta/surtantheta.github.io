@@ -874,14 +874,21 @@
     const cue = document.getElementById('scroll-cue');
     if (!cue) return;
 
-    const hideCue = () => cue.classList.add('is-hidden');
+    const updateCueVisibility = () => {
+      const pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      const viewport = window.innerHeight;
+      const fromTop = window.scrollY + viewport;
+      const nearBottom = fromTop >= pageHeight - 36;
+      const scrollable = pageHeight > viewport + 24;
+      cue.classList.toggle('is-hidden', !scrollable || nearBottom);
+    };
 
-    if (window.scrollY > 24) hideCue();
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 24) hideCue();
-    }, { passive: true });
-
-    setTimeout(hideCue, 9000);
+    updateCueVisibility();
+    window.addEventListener('scroll', updateCueVisibility, { passive: true });
+    window.addEventListener('resize', updateCueVisibility);
   })();
 </script>
 <script type="text/javascript">
