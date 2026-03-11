@@ -186,7 +186,7 @@ a:hover {
 .project-row .project-thumb:hover,
 .experience-row .experience-logo:hover,
 .news-widget:hover {
-  transform: translateY(-3px);
+  transform: scale(var(--logo-scale, 1)) translateY(-3px);
 }
 
 body,
@@ -267,11 +267,21 @@ h2 {
 }
 
 .experience-logo {
-  width: min(140px, 100%);
-  height: auto;
+  width: 140px;
+  height: 96px;
+  object-fit: contain;
+  object-position: center;
   display: block;
   margin: 0 auto;
+  transform: scale(var(--logo-scale, 1));
+  transform-origin: center center;
 }
+
+.experience-logo.exp-iiit { --logo-scale: 1.22; }
+.experience-logo.exp-iitb { --logo-scale: 1.03; }
+.experience-logo.exp-tcs  { --logo-scale: 1.08; }
+.experience-logo.exp-nus  { --logo-scale: 1.06; }
+.experience-logo.exp-cmi  { --logo-scale: 1.26; }
 
 span.highlight {
   background-color: #ffffd0;
@@ -371,6 +381,7 @@ span.highlight {
 
   .experience-row .experience-logo {
     width: min(42vw, 140px);
+    height: min(28vw, 96px);
   }
 
   .motion-reveal {
