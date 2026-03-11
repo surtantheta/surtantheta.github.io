@@ -174,8 +174,9 @@
                 </p>
                 <p style="text-align:center">
                   <span id="email-wrapper">
-                    <i class="fas fa-envelope"></i>
-                    <button type="button" id="show-email" class="link-button" aria-controls="email-content" aria-expanded="false">Email</button>
+                    <button type="button" id="show-email" class="link-button" aria-controls="email-content" aria-expanded="false">
+                      <i class="fas fa-envelope" style="margin-right: 5px;"></i>Email
+                    </button>
                   </span>
                   &nbsp;
 
@@ -339,6 +340,10 @@
               <p class="news-description"><strong>Aug' 25</strong>: I have joined the <strong>School of Computing, National University of Singapore</strong> as a PhD student in Fall 2025.</p>
               <p class="news-description"><strong>Feb' 25</strong>: Our paper titled <strong>Hyperbolic Uncertainty-Aware Few-Shot Incremental Point Cloud Segmentation</strong> is accepted at CVPR 2025.</p>
             </div>
+          </div>
+          <div id="scroll-cue" class="scroll-cue" aria-hidden="true">
+            <span>Scroll for more</span>
+            <i class="fa-solid fa-chevron-down"></i>
           </div>
           <!-- ============================================================================================ -->
 
@@ -864,6 +869,21 @@
 <!-- ================================================================================ -->
 
 <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&amp;w=300&amp;t=tt&amp;d=hejYQdrJJ9tQWVfZsCcw0uNoHqCuKtcqP5hg4gckm-4&amp;co=ffffff&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=808080"></script>
+<script type="text/javascript">
+  (() => {
+    const cue = document.getElementById('scroll-cue');
+    if (!cue) return;
+
+    const hideCue = () => cue.classList.add('is-hidden');
+
+    if (window.scrollY > 24) hideCue();
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 24) hideCue();
+    }, { passive: true });
+
+    setTimeout(hideCue, 9000);
+  })();
+</script>
 <script type="text/javascript">
   (() => {
     const motionTargets = [
