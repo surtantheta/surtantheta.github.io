@@ -167,6 +167,13 @@ h2 {
   transform: scale(1.08);
 }
 
+.experience-logo {
+  width: min(140px, 100%);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 span.highlight {
   background-color: #ffffd0;
 }
@@ -243,5 +250,27 @@ span.highlight {
   .project-row .two {
     width: 100% !important;
     height: 100% !important;
+  }
+
+  .experience-table,
+  .experience-table tbody,
+  .experience-table tr,
+  .experience-table td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .experience-row > td {
+    padding: 12px 16px !important;
+  }
+
+  .experience-row > td:first-child {
+    padding-bottom: 0 !important;
+    text-align: center !important;
+  }
+
+  .experience-row .experience-logo {
+    width: min(42vw, 140px);
   }
 }
