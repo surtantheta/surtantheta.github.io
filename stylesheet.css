@@ -326,9 +326,12 @@ h2 {
   margin: 0 auto;
 }
 
-.project-thumb-wide img,
-.project-thumb-wide video {
-  object-fit: contain !important;
+/* The driver demo has built-in padding around its central panoramic strip. */
+.driver-attention-preview > img,
+.driver-attention-preview video {
+  object-fit: cover !important;
+  transform: scale(6);
+  transform-origin: center;
 }
 
 .paper-row .paper-thumb {
