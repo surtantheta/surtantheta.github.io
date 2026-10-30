@@ -1,0 +1,32 @@
+RoboClue square promotional video and poster
+
+Source: https://github.com/surtantheta/RoboClue/tree/a995e57a03016bea4674f895a16cc170ef08f83e/assets/launch
+Video: roboclue-square.mp4
+Poster: roboclue-square-poster.png
+Redistributed unchanged.
+
+The opening uses real-robot execution footage from:
+DexMimicGen: Automated Data Generation for Bimanual Dexterous Manipulation via Imitation Learning.
+Authors: Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan,
+Ajay Mandlekar, Linxi Fan, and Yuke Zhu.
+Affiliations: NVIDIA Research, UT Austin, and UC San Diego.
+Project and source-license statement: https://dexmimicgen.github.io/
+Original video: https://dexmimicgen.github.io/resources/real2sim2real.mp4
+
+Changes made in the RoboClue adaptation: the 39-42 second real-robot excerpt
+is cropped to remove the bottom 104-pixel caption band, resampled to 30 fps,
+fitted to a square canvas, and overlaid with RoboClue captions. The three-second
+excerpt spans a five-second opening at 60% of its published rate, resulting in
+6x playback from the original 10x footage. No synthetic robot footage or AI
+resolution enhancement is used.
+
+The adapted RoboClue video, including RoboClue's contributions, is licensed
+under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+License: https://creativecommons.org/licenses/by-sa/4.0/
+Full terms: https://creativecommons.org/licenses/by-sa/4.0/legalcode.en
+Upstream attribution: https://github.com/surtantheta/RoboClue/blob/a995e57a03016bea4674f895a16cc170ef08f83e/assets/launch/ROBOT-FOOTAGE-CREDIT.md
+
+The opening is contextual third-party robot footage, not a RoboClue-controlled
+rollout, a FastWAM demonstration, an endorsement, a collaboration, or a measured
+physical-robot improvement from RoboClue. The media license does not relicense
+the RoboClue software or the rest of this website.

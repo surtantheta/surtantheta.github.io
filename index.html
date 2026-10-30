@@ -388,6 +388,7 @@
           <div class="news-widget">
             <div class="news-content">
               <p class="news-title">Recent News 🎉</p>
+              <p class="news-description"><strong>Nov' 26</strong>: Introducing <a href="https://github.com/surtantheta/RoboClue" target="_blank" rel="noopener noreferrer">RoboClue</a>, an open-source toolkit for detecting silent errors in robot-learning pipelines and verifying their corrections.</p>
               <p class="news-description"><strong>Oct' 26</strong>: Recognised as <strong>Top Reviewer</strong> by Neural Information Processing Systems (NeurIPS), 2026.</p>
               <p class="news-description"><strong>Sep' 26</strong>: Our paper titled UniCon3R: Unified Contact-aware 4D Human-Scene Reconstruction from Monocular Video is accepted at <strong>NeurIPS 2026</strong>.</p>
               <p class="news-description"><strong>Aug' 26</strong>: Check out <a href="https://www.youtube.com/watch?v=WLU1S3ZibEQ" target="_blank" rel="noopener noreferrer">my recent talk on career choices</a>!</p>
@@ -629,6 +630,53 @@
 
 <table class="projects-table" width="100%" align="center" border="0" cellpadding="20">
   <tbody>
+
+    <!-- RoboClue -->
+    <tr class="project-row" onmouseleave="roboclue_stop()" onmouseenter="roboclue_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle;text-align:center;">
+        <a class="one project-thumb" href="images/roboclue-demo.mp4" target="_blank" rel="noopener noreferrer"
+           aria-label="Watch the RoboClue demo video" onfocus="roboclue_start()" onblur="roboclue_stop()"
+           style="position:relative;width:160px;height:160px;display:inline-block;overflow:hidden;line-height:0;border-radius:8px;background:#000;">
+          <video id="roboclue-video" muted loop playsinline preload="none" poster="images/roboclue-poster.png"
+                 style="width:100%;height:100%;display:block;object-fit:contain;">
+            <source src="images/roboclue-demo.mp4" type="video/mp4">
+            Watch the RoboClue demo video.
+          </video>
+        </a>
+        <br>
+        <a href="images/roboclue-video-credits.txt" target="_blank" rel="noopener noreferrer" style="font-size:11px;">Video credits</a>
+
+        <script type="text/javascript">
+          function roboclue_start() {
+            if (prefersReducedMotion()) return;
+            const video = document.getElementById('roboclue-video');
+            if (!video) return;
+            const playback = video.play();
+            if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+          }
+          function roboclue_stop() {
+            const video = document.getElementById('roboclue-video');
+            if (!video) return;
+            video.pause();
+            try { video.currentTime = 0; } catch (e) {}
+          }
+        </script>
+      </td>
+
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://github.com/surtantheta/RoboClue" target="_blank" rel="noopener noreferrer">
+          <span class="papertitle">RoboClue: Catching Silent Errors in Robot Learning</span>
+        </a>
+        <p>
+          RoboClue checks robot-learning datasets, training inputs, and software recordings for silent pipeline errors.
+          It preserves evidence, identifies supported issues, and verifies corrections against the same declared checks.
+          Its command-line and MCP tools support workflows with GR00T, LeRobot, and OpenPI.
+          <br>
+          <a href="https://github.com/surtantheta/RoboClue" target="_blank" rel="noopener noreferrer">Code</a> |
+          <a href="images/roboclue-demo.mp4" target="_blank" rel="noopener noreferrer">Demo video</a>
+        </p>
+      </td>
+    </tr>
 
     <!-- EgoHuman3R -->
     <tr class="project-row" onmouseout="egohuman_stop()" onmouseover="egohuman_start()">
